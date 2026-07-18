@@ -13,6 +13,76 @@ const logsDir = path.join(dataDir, 'logs');
   }
 });
 
+function mergeGameData(existingGame, newGame) {
+  if (!existingGame) return newGame;
+  
+  const merged = { ...existingGame, ...newGame };
+  
+  // Merge status
+  if (existingGame.status && newGame.status) {
+    merged.status = {
+      code: newGame.status.code || existingGame.status.code,
+      label: newGame.status.label || existingGame.status.label,
+      updatedAt: newGame.status.updatedAt || existingGame.status.updatedAt
+    };
+  }
+  
+  // Merge currentSeason
+  if (existingGame.currentSeason && newGame.currentSeason) {
+    merged.currentSeason = {
+      ...existingGame.currentSeason,
+      ...newGame.currentSeason
+    };
+    if (!newGame.currentSeason.name || newGame.currentSeason.name === 'TBA') {
+      merged.currentSeason.name = existingGame.currentSeason.name;
+    }
+    if (!newGame.currentSeason.startDate || newGame.currentSeason.startDate === 'TBA') {
+      merged.currentSeason.startDate = existingGame.currentSeason.startDate;
+    }
+    if (!newGame.currentSeason.endDate || newGame.currentSeason.endDate === 'TBA') {
+      merged.currentSeason.endDate = existingGame.currentSeason.endDate;
+    }
+    if (newGame.currentSeason.isActive === undefined) {
+      merged.currentSeason.isActive = existingGame.currentSeason.isActive;
+    }
+    if (newGame.currentSeason.startDate === existingGame.currentSeason.startDate) {
+      merged.currentSeason.verification = existingGame.currentSeason.verification || newGame.currentSeason.verification;
+      merged.currentSeason.sourceUrl = newGame.currentSeason.sourceUrl || existingGame.currentSeason.sourceUrl;
+    }
+  }
+
+  // Merge nextSeason
+  if (existingGame.nextSeason && newGame.nextSeason) {
+    merged.nextSeason = {
+      ...existingGame.nextSeason,
+      ...newGame.nextSeason
+    };
+    if (!newGame.nextSeason.name || newGame.nextSeason.name === 'TBA') {
+      merged.nextSeason.name = existingGame.nextSeason.name;
+    }
+    if (!newGame.nextSeason.startDate || newGame.nextSeason.startDate === 'TBA') {
+      merged.nextSeason.startDate = existingGame.nextSeason.startDate;
+    }
+    if (!newGame.nextSeason.endDate || newGame.nextSeason.endDate === 'TBA') {
+      merged.nextSeason.endDate = existingGame.nextSeason.endDate;
+    }
+    if (newGame.nextSeason.isActive === undefined) {
+      merged.nextSeason.isActive = existingGame.nextSeason.isActive;
+    }
+    if (newGame.nextSeason.startDate === existingGame.nextSeason.startDate) {
+      merged.nextSeason.verification = existingGame.nextSeason.verification || newGame.nextSeason.verification;
+      merged.nextSeason.sourceUrl = newGame.nextSeason.sourceUrl || existingGame.nextSeason.sourceUrl;
+    }
+  }
+
+  // Merge features (keep existing if new features is empty)
+  if ((!newGame.features || newGame.features.length === 0) && existingGame.features) {
+    merged.features = existingGame.features;
+  }
+  
+  return merged;
+}
+
 async function main() {
   console.log('=== Starting SeasonForge Data Update ===');
   const todayStr = new Date().toISOString().split('T')[0];
@@ -28,6 +98,18 @@ async function main() {
   const gamesConfig = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
   const enabledGames = gamesConfig.filter(game => game.enabled);
 
+  // Load existing seasons.json to preserve dates if scrapers return TBA
+  const seasonsPath = path.join(dataDir, 'seasons.json');
+  let existingGames = [];
+  if (fs.existsSync(seasonsPath)) {
+    try {
+      const oldSeasons = JSON.parse(fs.readFileSync(seasonsPath, 'utf-8'));
+      existingGames = oldSeasons.games || [];
+    } catch (e) {
+      console.warn('[Orchestrator] Could not load existing seasons.json for merging:', e.message);
+    }
+  }
+
   const results = [];
   const logSummary = {
     timestamp: new Date().toISOString(),
@@ -39,6 +121,7 @@ async function main() {
   const adapterPromises = enabledGames.map(async (gameConfig) => {
     const adapterName = gameConfig.adapter;
     console.log(`[Orchestrator] Loading adapter ${adapterName} for ${gameConfig.name}...`);
+    const existingGame = existingGames.find(g => g.id === gameConfig.id);
 
     try {
       // Dynamic import of the adapter
@@ -47,7 +130,10 @@ async function main() {
       const adapter = new AdapterClass();
 
       // Fetch and normalize
-      const gameData = await adapter.fetchAndNormalize(gameConfig);
+      let gameData = await adapter.fetchAndNormalize(gameConfig);
+
+      // Merge with existing data to preserve dates/features if scraper returned TBA
+      gameData = mergeGameData(existingGame, gameData);
 
       // Validate
       Validator.validateGame(gameData);
@@ -147,7 +233,6 @@ async function main() {
   }
 
   // 3. Compare with old seasons.json to check if we have actual changes
-  const seasonsPath = path.join(dataDir, 'seasons.json');
   let hasActualChanges = true;
   
   if (fs.existsSync(seasonsPath)) {

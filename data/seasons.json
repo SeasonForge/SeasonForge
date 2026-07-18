@@ -12,11 +12,11 @@
       "status": {
         "code": "active",
         "label": "Active",
-        "updatedAt": "2026-07-18T23:43:34.268Z"
+        "updatedAt": "2026-07-18T23:49:54.262Z"
       },
       "currentSeason": {
         "name": "Mirage",
-        "startDate": "",
+        "startDate": "2026-03-29",
         "endDate": "2026-07-24",
         "isActive": true,
         "verification": "official",
@@ -31,10 +31,10 @@
         "sourceUrl": "https://www.pathofexile.com/forum/view-thread/3985393"
       },
       "features": [
-        "Curse of the Allflame expansion launch",
-        "Dynamic Reliquarian Ascendancy changes for the Scion class that shift every league",
-        "ExileCon 2026 competitive race qualifier events for Path of Exile 1 and 2",
-        "Abyssal Soul Shatter Rare Finisher Effect Twitch and and rewards"
+        "Curse of the Allflame expansion launching on July 24, 2026",
+        "Dynamic Reliquarian Ascendancy changes for the Scion class",
+        "Competitive ExileCon 2026 race qualifiers for both PoE 1 and PoE 2",
+        "Abyssal Soul Shatter Rare Finisher Effect Twitch drops"
       ],
       "links": {
         "official": "https://www.pathofexile.com/",
@@ -62,7 +62,7 @@
       "status": {
         "code": "early-access",
         "label": "Ранний доступ",
-        "updatedAt": "2026-07-18T23:43:28.079Z"
+        "updatedAt": "2026-07-18T23:49:48.761Z"
       },
       "currentSeason": {
         "name": "0.5.0: Return of the Ancients",
@@ -113,30 +113,29 @@
       "status": {
         "code": "active",
         "label": "Active",
-        "updatedAt": "2026-07-18T23:43:32.675Z"
+        "updatedAt": "2026-07-18T23:49:54.075Z"
       },
       "currentSeason": {
         "name": "Season of Death Awakening",
-        "startDate": "",
-        "endDate": "",
+        "startDate": "2026-06-29",
+        "endDate": "2026-07-23",
         "isActive": true,
         "verification": "official",
         "sourceUrl": "https://diablo4.blizzard.com/"
       },
       "nextSeason": {
-        "name": "TBA",
-        "startDate": "",
+        "name": "Season 15",
+        "startDate": "2026-09-17",
         "endDate": "",
         "isActive": false,
         "verification": "official",
         "sourceUrl": "https://diablo4.blizzard.com/"
       },
       "features": [
-        "Tear open Ruptures to face new seasonal threats",
+        "Tear open Ruptures across Sanctuary",
         "Conquer completely redesigned Realmwalkers",
-        "Confront a corrupted Reaper for your best chance at earning Mythic Unique rewards",
-        "Hunt the Death Cult throughout Sanctuary",
-        "Access to seasonal-exclusive features like The Tower and Leaderboards"
+        "Confront a corrupted Reaper for Mythic Unique rewards",
+        "Hunt the Death Cult in the new seasonal content in the Cult in the Season of of of Death"
       ],
       "links": {
         "official": "https://diablo4.blizzard.com/",
@@ -167,30 +166,30 @@
       "status": {
         "code": "active",
         "label": "Active",
-        "updatedAt": "2026-07-18T23:43:34.457Z"
+        "updatedAt": "2026-07-18T23:49:54.543Z"
       },
       "currentSeason": {
         "name": "Season 4",
-        "startDate": "",
-        "endDate": "",
+        "startDate": "2026-03-26",
+        "endDate": "2026-07-19",
         "isActive": true,
         "verification": "official",
         "sourceUrl": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1836506165565853"
       },
       "nextSeason": {
         "name": "Season 5",
-        "startDate": "",
+        "startDate": "2026-09-09",
         "endDate": "",
         "isActive": false,
         "verification": "official",
         "sourceUrl": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1836506165565853"
       },
       "features": [
-        "Shattering Omens",
-        "Item Corruption and Nemesis System",
-        "Aberroth Boss Encounter",
-        "Idol Altars and Refracted Slots",
-        "Evade Mechanics and Cosmetics"
+        "Feedback and Suggestions Tracker",
+        "Splinter Nova node for Marrow Shards",
+        "Nemesis Eggs",
+        "Bazaar Improvements",
+        "Evade Cosmetics"
       ],
       "links": {
         "official": "https://www.lastepoch.com/",
@@ -220,30 +219,30 @@
       "status": {
         "code": "active",
         "label": "Active",
-        "updatedAt": "2026-07-18T23:43:32.520Z"
+        "updatedAt": "2026-07-18T23:49:54.787Z"
       },
       "currentSeason": {
         "name": "Afterlight",
         "startDate": "2026-07-16",
-        "endDate": "",
+        "endDate": "2026-07-23",
         "isActive": true,
         "verification": "ai",
         "sourceUrl": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1838407329258272"
       },
       "nextSeason": {
-        "name": "TBA",
-        "startDate": "",
+        "name": "SS14",
+        "startDate": "2026-10-22",
         "endDate": "",
         "isActive": false,
         "verification": "official",
         "sourceUrl": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1838407329258272"
       },
       "features": [
-        "New Seasonal Mechanic: Afterlight, featuring Guiding Lantern purification and Wraith encounters",
-        "New Hero Trait: Dance of the Deep for Tide Whisper Selena focusing on Terra skills",
-        "New Progression System: Nether King's Divinity using Divinity Slates to customize build paths",
-        "New Challenge Mode: Divine Ascent, a timed floor-climbing survival experience",
-        "Major visual and QoL upgrades, including Lunaria integration into the core game and a trade house revamp"
+        "New Seasonal Mechanic 'Afterlight' involving purifying restless Wraiths and gathering relic loot",
+        "New Hero Trait 'Dance of the Deep' for Selena, built around Terra skills",
+        "New Progression System 'Nether King's Divinity' allowing branding of Divine Remnants on Divinity Slates",
+        "New timed challenge mode 'Divine Ascent' featuring floor bosses and rankings",
+        "Extensive system upgrades including Lunaria integration into the core game, streamlined Renewed Memory, and QoL trade house enhancements"
       ],
       "links": {
         "official": "https://torchlightinfinite.com/",
