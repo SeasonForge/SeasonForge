@@ -23,37 +23,6 @@ function formatLocalDate(dateStr) {
   return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()} г.`;
 }
 
-function getVerificationBadge(verification, sourceUrl) {
-  if (!verification) return '';
-  
-  let icon = '';
-  let text = '';
-  let className = '';
-  let tooltip = '';
-
-  switch (verification) {
-    case 'official':
-      return ''; // No badge for official dates, keeping it clean
-    case 'ai':
-    case 'estimated':
-      icon = '▲';
-      text = 'Предварительно';
-      className = 'verification-badge--estimated';
-      tooltip = 'Предварительная дата (требует подтверждения разработчиками)';
-      break;
-    default:
-      return '';
-  }
-
-  const badgeHtml = `<span class="verification-badge ${className}" title="${escapeAttr(tooltip)}">${icon} ${escapeHtml(text)}</span>`;
-  
-  if (sourceUrl) {
-    return `<a href="${escapeAttr(sourceUrl)}" target="_blank" rel="noopener noreferrer" class="verification-badge__link">${badgeHtml}</a>`;
-  }
-  
-  return badgeHtml;
-}
-
 function getRussianStatusLabel(code) {
   const mapping = {
     'ending': 'Завершается',
@@ -83,6 +52,11 @@ export function render(game = {}, options = {}) {
     : `Сезон ${rawNextSeason}`;
   const nextSeason = escapeHtml(nextSeasonClean);
   const nextSeasonDate = formatLocalDate(game.nextSeason?.startDate);
+  
+  const isNextSeasonEstimated = game.nextSeason?.verification === 'ai' || game.nextSeason?.verification === 'estimated';
+  const nextSeasonDateBadge = isNextSeasonEstimated && nextSeasonDate
+    ? ` <span class="verification-badge verification-badge--estimated" title="Эта дата рассчитана алгоритмом на основе исторических циклов игры и не является официальным анонсом" style="margin-left: 0.5rem; cursor: help; vertical-align: middle;">▲ Прогноз</span>`
+    : '';
   
   const countdown = options.countdown || {};
   const progressBar = options.progressBar || '';
@@ -166,9 +140,8 @@ export function render(game = {}, options = {}) {
           <span class="game-card__label">Следующий сезон</span>
           <div class="game-card__next-season-title">
             <strong>${nextSeason}</strong>
-            ${getVerificationBadge(game.nextSeason?.verification, game.nextSeason?.sourceUrl)}
           </div>
-          <p class="game-card__next-season-date">${nextSeasonDate || 'TBA'}</p>
+          <p class="game-card__next-season-date">${nextSeasonDate || 'TBA'}${nextSeasonDateBadge}</p>
         </div>
       </div>
 
@@ -177,7 +150,6 @@ export function render(game = {}, options = {}) {
           <span class="game-card__label">Текущий сезон / Лига</span>
           <h3 class="game-card__season">
             ${currentSeason}
-            ${getVerificationBadge(game.currentSeason?.verification, game.currentSeason?.sourceUrl)}
           </h3>
           <div class="game-card__meta-row">
             <span>Запуск:</span>

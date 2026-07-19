@@ -185,18 +185,7 @@ function attachNavbarEvents() {
 }
 
 function attachFooterEvents() {
-  const resetBtn = document.getElementById('reset-data-btn');
-  if (resetBtn) {
-    resetBtn.addEventListener('click', () => {
-      const state = getState();
-      setActiveView('card');
-      if (state.games.length > 0) {
-        setActiveGame(state.games[0]);
-      }
-      renderToast('Данные сброшены к исходным!', 'info');
-      renderApp();
-    });
-  }
+  // Reset button removed from footer
 }
 
 function startCountdownLoop() {
