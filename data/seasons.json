@@ -24,12 +24,12 @@
           "en": "Maintenance",
           "ru": "Техобслуживание"
         },
-        "updatedAt": "2026-07-19T02:43:55.543Z"
+        "updatedAt": "2026-07-19T03:33:57.255Z"
       },
       "currentSeason": {
         "name": {
           "en": "3.28: Necropolis Finale",
-          "ru": "3.28: Necropolis Finale"
+          "ru": "3.28: Финал Некрополя"
         },
         "startDate": "2026-03-29",
         "endDate": "2026-07-20",
@@ -40,7 +40,7 @@
       "nextSeason": {
         "name": {
           "en": "3.29: Curse of the Allflame",
-          "ru": "3.29: Curse of the Allflame"
+          "ru": "3.29: Проклятие Огня Всея"
         },
         "startDate": "2026-07-24",
         "endDate": "",
@@ -50,10 +50,10 @@
       },
       "features": {
         "en": [
-          "Контент нового расширения Curse of the Allflame",
-          "Квалификационные гонки ExileCon 2026 в соло-формате",
-          "Обновление восхождения Reliquarian для класса Дикарка (Scion)",
-          "Эксклюзивный косметический эффект Abyssal Soul Shatter"
+          "Curse of the Allflame expansion content",
+          "ExileCon 2026 Solo Qualifier Race Events",
+          "Reliquarian ascendancy update for Scion class",
+          "Exclusive Abyssal Soul Shatter cosmetic effect"
         ],
         "ru": [
           "Контент нового расширения Curse of the Allflame",
@@ -101,7 +101,7 @@
           "en": "Early Access",
           "ru": "Ранний доступ"
         },
-        "updatedAt": "2026-07-19T03:28:54.855Z"
+        "updatedAt": "2026-07-19T03:33:56.641Z"
       },
       "currentSeason": {
         "name": {
@@ -178,11 +178,11 @@
           "en": "Maintenance",
           "ru": "Техобслуживание"
         },
-        "updatedAt": "2026-07-19T02:43:56.348Z"
+        "updatedAt": "2026-07-19T03:33:58.271Z"
       },
       "currentSeason": {
         "name": {
-          "en": "Сезон 14: Season of Death Awakening",
+          "en": "Season 14: Season of Death Awakening",
           "ru": "Сезон 14: Season of Death Awakening"
         },
         "startDate": "2026-06-30",
@@ -194,7 +194,7 @@
       "nextSeason": {
         "name": {
           "en": "Season 15",
-          "ru": "Season 15"
+          "ru": "Сезон 15"
         },
         "startDate": "2026-09-18",
         "endDate": "",
@@ -204,11 +204,11 @@
       },
       "features": {
         "en": [
-          "Борьба с новой угрозой от культов Смерти (Death Cults)",
-          "Прогрессия Башни испытаний и обновленные таблицы лидеров",
-          "Бесплатный пробный доступ к новому игровому классу",
-          "Возвращение механики Мироходцев (Realmwalkers) в игру",
-          "Масштабный реворк системы эпохальных уникальных предметов"
+          "Fight the new threat from Death Cults",
+          "Trials Tower progression and updated leaderboards",
+          "Free trial access to the new character class",
+          "Return of the Realmwalkers mechanic to the game",
+          "Massive rework of the mythical unique items system"
         ],
         "ru": [
           "Борьба с новой угрозой от культов Смерти (Death Cults)",
@@ -259,11 +259,11 @@
           "en": "Active",
           "ru": "Активен"
         },
-        "updatedAt": "2026-07-19T02:43:55.310Z"
+        "updatedAt": "2026-07-19T03:33:57.007Z"
       },
       "currentSeason": {
         "name": {
-          "en": "Цикл 4: Shattered Omens",
+          "en": "Cycle 4: Shattered Omens",
           "ru": "Цикл 4: Shattered Omens"
         },
         "startDate": "2026-03-26",
@@ -274,7 +274,7 @@
       },
       "nextSeason": {
         "name": {
-          "en": "Cycle 5 & Расширение Orobyss",
+          "en": "Cycle 5 & Orobyss Expansion",
           "ru": "Cycle 5 & Расширение Orobyss"
         },
         "startDate": "2026-09-10",
@@ -285,10 +285,10 @@
       },
       "features": {
         "en": [
-          "Случайные энкаунтеры с Предзнаменованиями (Omens)",
-          "Реворк системы крафта и фракций торговли",
-          "Второе крупное дополнение с новыми подклассами",
-          "Расширенный эндгейм-контент монолитов судьбы"
+          "Random encounters with Omens",
+          "Rework of crafting and trade factions systems",
+          "Second major expansion with new subclasses",
+          "Expanded Monolith of Fate endgame content"
         ],
         "ru": [
           "Случайные энкаунтеры с Предзнаменованиями (Omens)",
@@ -317,7 +317,7 @@
       "id": "torchlight-infinite",
       "name": {
         "en": "Torchlight: Infinite",
-        "ru": "Torchlight: Infinite"
+        "ru": "Торчлайт: Инфинит"
       },
       "developer": "Perfect World Entertainment",
       "logo": "",
@@ -337,7 +337,7 @@
           "en": "Maintenance",
           "ru": "Техобслуживание"
         },
-        "updatedAt": "2026-07-19T02:43:55.285Z"
+        "updatedAt": "2026-07-19T03:33:57.024Z"
       },
       "currentSeason": {
         "name": {
@@ -363,10 +363,10 @@
       },
       "features": {
         "en": [
-          "Механика Ночных Стражей: проводы душ усопших",
-          "Новый сверхсложный эндгейм-режим Divine Ascent",
-          "Новый играбельный герой-маг Кронос",
-          "Автоматизация лут-фильтра нового поколения"
+          "Night Watch mechanic: guiding the souls of the deceased",
+          "New ultra-hard endgame mode Divine Ascent",
+          "New playable mage hero Chronos",
+          "Next-generation loot filter automation"
         ],
         "ru": [
           "Механика Ночных Стражей: проводы душ усопших",

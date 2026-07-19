@@ -134,6 +134,7 @@ BaseAdapter.prototype.callGemini = async function(text, systemInstruction, schem
 
 // Set dummy API key to bypass env validation
 process.env.GEMINI_API_KEY = 'mock-api-key';
+process.env.FORCE_UPDATE = 'true';
 
 console.log('=== Running SeasonForge Backend Test Pipeline ===');
 // Dynamically import and run the orchestrator

@@ -275,7 +275,8 @@ async function main() {
       const adapter = new AdapterClass();
 
       // Fetch and normalize
-      let gameData = await adapter.fetchAndNormalize(gameConfig, existingGame);
+      const passExisting = process.env.FORCE_UPDATE === 'true' ? undefined : existingGame;
+      let gameData = await adapter.fetchAndNormalize(gameConfig, passExisting);
 
       // Merge with existing data to preserve dates/features if scraper returned TBA
       gameData = mergeGameData(existingGame, gameData);
