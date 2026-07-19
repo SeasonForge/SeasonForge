@@ -18,21 +18,47 @@ let countdownTimer = null;
 function updateSeo(game) {
   if (!game) return;
   const gameName = getVal(game.name);
-  document.title = `${gameName} - ${t('seo.title')}`;
-  document.documentElement.lang = getState().settings?.lang || 'en';
+  const activeLang = getState().settings?.lang || 'en';
   
-  const desc = t('seo.description');
+  // Construct dynamic description
+  const currentSeasonName = getVal(game.currentSeason?.name, activeLang) || 'TBA';
+  const nextSeasonName = getVal(game.nextSeason?.name, activeLang) || 'TBA';
+  const nextSeasonStart = game.nextSeason?.startDate || '';
+  
+  let desc = '';
+  if (activeLang === 'ru') {
+    desc = `Следите за сезонами ${gameName}. Текущий сезон: ${currentSeasonName}. `;
+    if (nextSeasonStart) {
+      desc += `Следующий сезон: ${nextSeasonName} начнется ${nextSeasonStart}. `;
+    } else {
+      desc += `Следующий сезон: ${nextSeasonName} (дата уточняется). `;
+    }
+    desc += `Таймеры обратного отсчета, хронология и ссылки.`;
+  } else {
+    desc = `Track ${gameName} seasons. Current: ${currentSeasonName}. `;
+    if (nextSeasonStart) {
+      desc += `Next season: ${nextSeasonName} starts on ${nextSeasonStart}. `;
+    } else {
+      desc += `Next season: ${nextSeasonName} date TBA. `;
+    }
+    desc += `Live countdowns, history timeline, and links.`;
+  }
+
+  const pageTitle = `${gameName} - ${activeLang === 'ru' ? 'Мониторинг Сезонов' : 'ARPG Season Tracker'}`;
+  document.title = pageTitle;
+  document.documentElement.lang = activeLang;
+  
   const descMeta = document.querySelector('meta[name="description"]');
   if (descMeta) descMeta.setAttribute('content', desc);
   
   const ogTitle = document.querySelector('meta[property="og:title"]');
-  if (ogTitle) ogTitle.setAttribute('content', `${gameName} - ${t('seo.title')}`);
+  if (ogTitle) ogTitle.setAttribute('content', pageTitle);
   
   const ogDesc = document.querySelector('meta[property="og:description"]');
   if (ogDesc) ogDesc.setAttribute('content', desc);
   
   const twitterTitle = document.querySelector('meta[name="twitter:title"]');
-  if (twitterTitle) twitterTitle.setAttribute('content', `${gameName} - ${t('seo.title')}`);
+  if (twitterTitle) twitterTitle.setAttribute('content', pageTitle);
   
   const twitterDesc = document.querySelector('meta[name="twitter:description"]');
   if (twitterDesc) twitterDesc.setAttribute('content', desc);

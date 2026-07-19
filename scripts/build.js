@@ -172,8 +172,22 @@ async function build() {
 
     // 3. Construct SEO values
     const canonicalUrl = `${BASE_URL}/games/${gameId}/`;
-    const schemaObj = {
-      "@context": "https://schema.org",
+    
+    // Construct dynamic description
+    const currentSeasonName = game.currentSeason?.name?.en || 'TBA';
+    const nextSeasonName = game.nextSeason?.name?.en || 'TBA';
+    const nextSeasonStart = game.nextSeason?.startDate || '';
+    
+    let dynamicDesc = `Track ${gameName} seasons. Current: ${currentSeasonName}. `;
+    if (nextSeasonStart) {
+      dynamicDesc += `Next season: ${nextSeasonName} starts on ${nextSeasonStart}. `;
+    } else {
+      dynamicDesc += `Next season: ${nextSeasonName} date TBA. `;
+    }
+    dynamicDesc += `Get live countdowns, timeline history, and useful links.`;
+
+    const schemaGraph = [];
+    const gameNode = {
       "@type": "VideoGame",
       "name": gameName,
       "description": aboutHtml || `Detailed season information and countdown tracker for ${gameName}.`,
@@ -185,21 +199,71 @@ async function build() {
       },
       "url": canonicalUrl
     };
-
     if (game.metadata) {
       if (game.metadata.platforms) {
-        schemaObj.gamePlatform = game.metadata.platforms;
+        gameNode.gamePlatform = game.metadata.platforms;
       }
       if (game.metadata.tags) {
-        schemaObj.genre = game.metadata.tags;
+        gameNode.genre = game.metadata.tags;
       }
     }
+    schemaGraph.push(gameNode);
+
+    // Event for Current Season
+    if (game.currentSeason?.startDate) {
+      const curName = game.currentSeason.name?.en || 'TBA';
+      schemaGraph.push({
+        "@type": "Event",
+        "name": `${gameName} - ${curName} Launch`,
+        "startDate": game.currentSeason.startDate,
+        ...(game.currentSeason.endDate ? { "endDate": game.currentSeason.endDate } : {}),
+        "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "@type": "VirtualLocation",
+          "url": canonicalUrl
+        },
+        "description": `Launch event of the ${curName} season for ${gameName}.`,
+        "organizer": {
+          "@type": "Organization",
+          "name": game.developer || "Unknown Developer"
+        }
+      });
+    }
+
+    // Event for Next Season
+    if (game.nextSeason?.startDate) {
+      const nxtName = game.nextSeason.name?.en || 'TBA';
+      schemaGraph.push({
+        "@type": "Event",
+        "name": `${gameName} - ${nxtName} Launch`,
+        "startDate": game.nextSeason.startDate,
+        "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "@type": "VirtualLocation",
+          "url": canonicalUrl
+        },
+        "description": `Launch event of the upcoming ${nxtName} season for ${gameName}.`,
+        "organizer": {
+          "@type": "Organization",
+          "name": game.developer || "Unknown Developer"
+        }
+      });
+    }
+
+    const schemaObj = {
+      "@context": "https://schema.org",
+      "@graph": schemaGraph
+    };
     const schemaJson = JSON.stringify(schemaObj, null, 2);
 
     // 4. Inject placeholders into layout
     let html = template;
     html = html.replace(/{{GAME_ID}}/g, gameId);
     html = html.replace(/{{GAME_NAME}}/g, gameName);
+    html = html.replace(/{{GAME_DESCRIPTION}}/g, dynamicDesc);
+    html = html.replace(/{{BASE_URL}}/g, BASE_URL);
     html = html.replace(/{{GAME_COLOR}}/g, gameColor);
     html = html.replace(/{{GAME_CARD_HTML}}/g, cardHtml);
     html = html.replace(/{{ABOUT_HTML}}/g, aboutHtml);

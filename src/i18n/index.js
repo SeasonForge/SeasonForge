@@ -54,16 +54,34 @@ export function getVal(field, langOverride) {
   return field[lang] || field.en || field.ru || '';
 }
 
-// Detect default locale based on browser
+// Detect default locale based on browser or query param
 export function detectDefaultLocale() {
-  const saved = localStorage.getItem('seasonforge_lang');
-  if (saved === 'en' || saved === 'ru') {
-    return saved;
+  if (typeof window !== 'undefined' && window.location?.search) {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const langParam = params.get('lang');
+      if (langParam === 'en' || langParam === 'ru') {
+        return langParam;
+      }
+    } catch (e) {
+      console.warn('Failed to parse URL lang parameter:', e);
+    }
+  }
+
+  try {
+    const saved = localStorage.getItem('seasonforge_lang');
+    if (saved === 'en' || saved === 'ru') {
+      return saved;
+    }
+  } catch (e) {
+    // localStorage might be blocked or missing in Node
   }
   
-  const browserLang = navigator.language || navigator.userLanguage || '';
-  if (browserLang.toLowerCase().startsWith('ru')) {
-    return 'ru';
+  if (typeof navigator !== 'undefined') {
+    const browserLang = navigator.language || navigator.userLanguage || '';
+    if (browserLang.toLowerCase().startsWith('ru')) {
+      return 'ru';
+    }
   }
   
   return 'en';
