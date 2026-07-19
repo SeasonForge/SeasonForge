@@ -40,7 +40,9 @@ Currently, the year is ${new Date().getFullYear()}. Determine:
 3. Next Season name, start date (YYYY-MM-DD), and end date (YYYY-MM-DD). Use empty string if unknown.
 4. Game status: "active" (if a season is running), "in-development" (if between seasons), "maintenance" (if offline).
 5. A list of 3-5 key features introduced or planned.
+6. Whether the next season start date is officially confirmed by developers (use "official") or estimated/predicted based on patterns/intervals (use "estimated").
 
+CRITICAL: Translate all extracted text fields (season names, feature descriptions) into Russian. The features array must contain 3-5 clear points in Russian.
 Ensure all dates are formatted strictly as YYYY-MM-DD or empty string. Do not invent dates. Reference news headlines and publication dates in the text to understand when events happen.`;
 
       const schema = {
@@ -52,13 +54,14 @@ Ensure all dates are formatted strictly as YYYY-MM-DD or empty string. Do not in
           nextSeasonName: { type: 'STRING' },
           nextSeasonStartDate: { type: 'STRING' },
           nextSeasonEndDate: { type: 'STRING' },
+          nextSeasonVerification: { type: 'STRING', description: 'Must be "official" if date is officially announced, or "estimated" if it is a prediction/forecast.' },
           status: { type: 'STRING' },
           features: {
             type: 'ARRAY',
             items: { type: 'STRING' }
           }
         },
-        required: ['currentSeasonName', 'currentSeasonStartDate', 'currentSeasonEndDate', 'nextSeasonName', 'nextSeasonStartDate', 'nextSeasonEndDate', 'status', 'features']
+        required: ['currentSeasonName', 'currentSeasonStartDate', 'currentSeasonEndDate', 'nextSeasonName', 'nextSeasonStartDate', 'nextSeasonEndDate', 'nextSeasonVerification', 'status', 'features']
       };
 
       const extracted = await this.callGemini(newsText, systemInstruction, schema);
@@ -88,7 +91,7 @@ Ensure all dates are formatted strictly as YYYY-MM-DD or empty string. Do not in
           startDate: extracted.currentSeasonStartDate || '',
           endDate: extracted.currentSeasonEndDate || '',
           isActive: extracted.status === 'active',
-          verification: extracted.currentSeasonStartDate ? 'ai' : 'official',
+          verification: 'official',
           sourceUrl: firstItem.properties.newsUrl || 'https://diablo4.blizzard.com/'
         },
         nextSeason: {
@@ -96,7 +99,7 @@ Ensure all dates are formatted strictly as YYYY-MM-DD or empty string. Do not in
           startDate: extracted.nextSeasonStartDate || '',
           endDate: extracted.nextSeasonEndDate || '',
           isActive: false,
-          verification: extracted.nextSeasonStartDate ? 'ai' : 'official',
+          verification: extracted.nextSeasonVerification === 'official' ? 'official' : 'estimated',
           sourceUrl: firstItem.properties.newsUrl || 'https://diablo4.blizzard.com/'
         },
         features: extracted.features || [],

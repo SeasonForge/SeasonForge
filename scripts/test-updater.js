@@ -24,10 +24,10 @@ BaseAdapter.prototype.callGemini = async function(text, systemInstruction, schem
         nextSeasonVerification: "official",
         status: "ending",
         features: [
-          "Тематика глубоководных экспедиций («Вояжи»)",
-          "Альтернативная система гнезд в предметах",
-          "Глобальный реворк механик Бездны (Abyss) и Легиона",
-          "Новые классы восхождения и балансировка умений"
+          "Контент нового расширения Curse of the Allflame",
+          "Квалификационные гонки ExileCon 2026 в соло-формате",
+          "Обновление восхождения Reliquarian для класса Дикарка (Scion)",
+          "Эксклюзивный косметический эффект Abyssal Soul Shatter"
         ]
       };
     case 'diablo-iv':
@@ -41,10 +41,11 @@ BaseAdapter.prototype.callGemini = async function(text, systemInstruction, schem
         nextSeasonVerification: "estimated",
         status: "in-progress",
         features: [
-          "Тематика «Пробуждения Смерти»",
-          "Новое подземелье-испытание «Катакомбы Мучений»",
-          "Система напарников-наемников нового поколения",
-          "Изменение баланса классов после BlizzCon 2026"
+          "Борьба с новой угрозой от культов Смерти (Death Cults)",
+          "Прогрессия Башни испытаний и обновленные таблицы лидеров",
+          "Бесплатный пробный доступ к новому игровому классу",
+          "Возвращение механики Мироходцев (Realmwalkers) в игру",
+          "Масштабный реворк системы эпохальных уникальных предметов"
         ]
       };
     case 'last-epoch':
