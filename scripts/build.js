@@ -81,6 +81,8 @@ function calculateCountdown(targetDateStr) {
 async function build() {
   console.log('=== Starting Static Site Generation (SSG) ===');
 
+  const BASE_URL = 'https://seasonforge.com';
+
   const seasonsPath = path.join(dataDir, 'seasons.json');
   if (!fs.existsSync(seasonsPath)) {
     console.error('Database file seasons.json not found. Run update-seasons first.');
@@ -129,7 +131,33 @@ async function build() {
       }
     }
 
-    // 3. Inject placeholders into layout
+    // 3. Construct SEO values
+    const canonicalUrl = `${BASE_URL}/games/${gameId}/`;
+    const schemaObj = {
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": gameName,
+      "description": aboutHtml || `Detailed season information and countdown tracker for ${gameName}.`,
+      "applicationCategory": "Game",
+      "operatingSystem": "Windows",
+      "publisher": {
+        "@type": "Organization",
+        "name": game.developer || "Unknown Developer"
+      },
+      "url": canonicalUrl
+    };
+
+    if (game.metadata) {
+      if (game.metadata.platforms) {
+        schemaObj.gamePlatform = game.metadata.platforms;
+      }
+      if (game.metadata.tags) {
+        schemaObj.genre = game.metadata.tags;
+      }
+    }
+    const schemaJson = JSON.stringify(schemaObj, null, 2);
+
+    // 4. Inject placeholders into layout
     let html = template;
     html = html.replace(/{{GAME_ID}}/g, gameId);
     html = html.replace(/{{GAME_NAME}}/g, gameName);
@@ -137,8 +165,10 @@ async function build() {
     html = html.replace(/{{GAME_CARD_HTML}}/g, cardHtml);
     html = html.replace(/{{ABOUT_HTML}}/g, aboutHtml);
     html = html.replace(/{{ABOUT_JSON}}/g, aboutJson);
+    html = html.replace(/{{CANONICAL_URL}}/g, canonicalUrl);
+    html = html.replace(/{{SCHEMA_JSONLD}}/g, schemaJson);
 
-    // 3. Write target index.html
+    // 5. Write target index.html
     const targetDir = path.join(__dirname, `../games/${gameId}`);
     if (!fs.existsSync(targetDir)) {
       fs.mkdirSync(targetDir, { recursive: true });
@@ -146,6 +176,43 @@ async function build() {
 
     fs.writeFileSync(path.join(targetDir, 'index.html'), html, 'utf-8');
   }
+
+  // 6. Generate sitemap.xml
+  console.log('[SSG] Generating sitemap.xml...');
+  const todayStr = new Date().toISOString().split('T')[0];
+  let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>${BASE_URL}/</loc>
+    <lastmod>${todayStr}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+`;
+
+  for (const game of games) {
+    sitemapXml += `  <url>
+    <loc>${BASE_URL}/games/${game.id}/</loc>
+    <lastmod>${todayStr}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+`;
+  }
+
+  sitemapXml += `</urlset>\n`;
+  fs.writeFileSync(path.join(__dirname, '../sitemap.xml'), sitemapXml, 'utf-8');
+  console.log('[SSG] sitemap.xml written successfully.');
+
+  // 7. Generate robots.txt
+  console.log('[SSG] Generating robots.txt...');
+  const robotsTxt = `User-agent: *
+Allow: /
+
+Sitemap: ${BASE_URL}/sitemap.xml
+`;
+  fs.writeFileSync(path.join(__dirname, '../robots.txt'), robotsTxt, 'utf-8');
+  console.log('[SSG] robots.txt written successfully.');
 
   console.log(`=== SSG Complete: Generated detail pages for ${games.length} games ===`);
 }
