@@ -71,8 +71,12 @@ function renderLangSwitcher() {
   const currentLang = state.settings.lang;
   
   switcherRoot.innerHTML = `
-    <button class="lang-switcher__btn ${currentLang === 'en' ? 'lang-switcher__btn--active' : ''}" data-lang-val="en">🇺🇸 EN</button>
-    <button class="lang-switcher__btn ${currentLang === 'ru' ? 'lang-switcher__btn--active' : ''}" data-lang-val="ru">🇷🇺 RU</button>
+    <button class="lang-switcher__btn ${currentLang === 'en' ? 'lang-switcher__btn--active' : ''}" data-lang-val="en">
+      <img src="https://flagcdn.com/w20/us.png" class="lang-switcher__flag" alt="EN"> EN
+    </button>
+    <button class="lang-switcher__btn ${currentLang === 'ru' ? 'lang-switcher__btn--active' : ''}" data-lang-val="ru">
+      <img src="https://flagcdn.com/w20/ru.png" class="lang-switcher__flag" alt="RU"> RU
+    </button>
   `;
   
   switcherRoot.querySelectorAll('[data-lang-val]').forEach(btn => {

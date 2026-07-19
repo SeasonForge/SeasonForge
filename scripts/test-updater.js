@@ -20,7 +20,7 @@ BaseAdapter.prototype.callGemini = async function(text, systemInstruction, schem
         currentSeasonStartDate: getRelativeDateString(-112),
         currentSeasonEndDate: getRelativeDateString(1),
         nextSeasonNameEn: "3.29: Curse of the Allflame",
-        nextSeasonNameRu: "3.29: Проклятие Огня Всея",
+        nextSeasonNameRu: "3.29: Проклятие Всепламени",
         nextSeasonStartDate: getRelativeDateString(5),
         nextSeasonEndDate: "",
         nextSeasonVerification: "official",
@@ -32,7 +32,7 @@ BaseAdapter.prototype.callGemini = async function(text, systemInstruction, schem
           "Exclusive Abyssal Soul Shatter cosmetic effect"
         ],
         featuresRu: [
-          "Контент нового расширения Curse of the Allflame",
+          "Контент нового расширения Проклятие Всепламени",
           "Квалификационные гонки ExileCon 2026 в соло-формате",
           "Обновление восхождения Reliquarian для класса Дикарка (Scion)",
           "Эксклюзивный косметический эффект Abyssal Soul Shatter"

@@ -1410,6 +1410,14 @@ body::after {
   box-shadow: 0 0 10px var(--accent-glow);
 }
 
+.lang-switcher__flag {
+  width: 14px;
+  height: 10px;
+  border-radius: 1px;
+  object-fit: cover;
+  display: inline-block;
+}
+
 /* History Table styling */
 .history-table th, .history-table td {
   padding: 0.75rem 0.5rem;
