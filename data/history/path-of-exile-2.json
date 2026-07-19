@@ -1,20 +1,38 @@
 [
   {
     "season": {
-      "en": "Early Access Launch",
-      "ru": "Запуск раннего доступа"
+      "en": "0.4.0: Fate of the Vaal",
+      "ru": "0.4.0: Судьба Ваал"
     },
-    "startDate": "2026-11-15",
-    "endDate": null,
-    "sourceUrl": "https://www.pathofexile.com/poe2"
+    "startDate": "2025-12-13",
+    "endDate": "2026-05-29",
+    "sourceUrl": "https://pathofexile2.com"
   },
   {
     "season": {
-      "en": "Closed Beta Test",
-      "ru": "Закрытый бета-тест"
+      "en": "0.3.0: Rise of the Abyssal",
+      "ru": "0.3.0: Восхождение Бездны"
     },
-    "startDate": "2026-06-07",
-    "endDate": "2026-11-15",
-    "sourceUrl": "https://www.pathofexile.com/poe2"
+    "startDate": "2025-08-15",
+    "endDate": "2025-12-13",
+    "sourceUrl": "https://pathofexile2.com"
+  },
+  {
+    "season": {
+      "en": "0.2.0: Early Access Launch",
+      "ru": "0.2.0: Запуск Раннего Доступа"
+    },
+    "startDate": "2025-05-30",
+    "endDate": "2025-08-15",
+    "sourceUrl": "https://pathofexile2.com"
+  },
+  {
+    "season": {
+      "en": "0.1.0: Closed Beta Test",
+      "ru": "0.1.0: Закрытый Бета-Тест"
+    },
+    "startDate": "2024-11-15",
+    "endDate": "2025-05-30",
+    "sourceUrl": "https://pathofexile2.com"
   }
 ]
