@@ -12,10 +12,10 @@
       "icon": "💀",
       "website": "https://www.pathofexile.com/",
       "latestNews": {
-        "id": "https://www.pathofexile.com/forum/view-thread/3985393",
-        "title": "ExileCon 2026 Path of Exile 1 Race Qualifier Events",
-        "url": "https://www.pathofexile.com/forum/view-thread/3985393",
-        "publishDate": "Fri, 17 Jul 2026 01:00:00 +0000",
+        "id": "https://www.pathofexile.com/forum/view-thread/3986344",
+        "title": "Path of Exile 1: New Uniques",
+        "url": "https://www.pathofexile.com/forum/view-thread/3986344",
+        "publishDate": "Sun, 19 Jul 2026 22:09:32 +0000",
         "source": "Path of Exile RSS"
       },
       "status": {
@@ -24,29 +24,29 @@
           "en": "Ending",
           "ru": "Завершается"
         },
-        "updatedAt": "2026-07-19T09:54:24.376Z"
+        "updatedAt": "2026-07-19T22:42:44.514Z"
       },
       "currentSeason": {
         "name": {
           "en": "3.28: Necropolis Finale",
           "ru": "3.28: Финал Некрополя"
         },
-        "startDate": "2026-03-29",
-        "endDate": "2026-07-20",
+        "startDate": "2026-03-29T20:00:00Z",
+        "endDate": "2026-07-20T20:00:00Z",
         "isActive": false,
         "verification": "official",
-        "sourceUrl": "https://www.pathofexile.com/forum/view-thread/3985393"
+        "sourceUrl": "https://www.pathofexile.com/forum/view-thread/3986344"
       },
       "nextSeason": {
         "name": {
           "en": "3.29: Curse of the Allflame",
           "ru": "3.29: Проклятие Всепламени"
         },
-        "startDate": "2026-07-24",
+        "startDate": "2026-07-24T20:00:00Z",
         "endDate": "",
         "isActive": false,
         "verification": "official",
-        "sourceUrl": "https://www.pathofexile.com/forum/view-thread/3985393"
+        "sourceUrl": "https://www.pathofexile.com/forum/view-thread/3986344"
       },
       "features": {
         "en": [
@@ -101,14 +101,14 @@
           "en": "Early Access",
           "ru": "Ранний доступ"
         },
-        "updatedAt": "2026-07-19T09:54:23.360Z"
+        "updatedAt": "2026-07-19T22:42:43.976Z"
       },
       "currentSeason": {
         "name": {
           "en": "0.5.0: Return of the Ancients",
           "ru": "0.5.0: Return of the Ancients"
         },
-        "startDate": "2026-05-29",
+        "startDate": "2026-05-29T20:00:00Z",
         "endDate": "",
         "isActive": false,
         "verification": "official",
@@ -119,7 +119,7 @@
           "en": "Version 1.0 (Release)",
           "ru": "Версия 1.0 (Релиз)"
         },
-        "startDate": "2026-12-15",
+        "startDate": "2026-12-15T20:00:00Z",
         "endDate": "",
         "isActive": false,
         "verification": "official",
@@ -179,15 +179,15 @@
           "en": "In Progress",
           "ru": "В разгаре"
         },
-        "updatedAt": "2026-07-19T09:54:24.980Z"
+        "updatedAt": "2026-07-19T22:42:45.467Z"
       },
       "currentSeason": {
         "name": {
           "en": "Season 14: Season of Death Awakening",
           "ru": "Сезон 14: Season of Death Awakening"
         },
-        "startDate": "2026-06-30",
-        "endDate": "2026-07-24",
+        "startDate": "2026-06-30T17:00:00Z",
+        "endDate": "2026-07-24T17:00:00Z",
         "isActive": false,
         "verification": "official",
         "sourceUrl": "https://news.blizzard.com/en-us/article/24268702/hunt-the-death-cult-in-season-of-death-awakening"
@@ -197,7 +197,7 @@
           "en": "Season 15",
           "ru": "Сезон 15"
         },
-        "startDate": "2026-09-18",
+        "startDate": "2026-09-18T17:00:00Z",
         "endDate": "",
         "isActive": false,
         "verification": "estimated",
@@ -260,15 +260,15 @@
           "en": "Active",
           "ru": "Активен"
         },
-        "updatedAt": "2026-07-19T09:54:23.845Z"
+        "updatedAt": "2026-07-19T22:42:44.356Z"
       },
       "currentSeason": {
         "name": {
           "en": "Cycle 5: Shattered Omens",
           "ru": "Цикл 5: Расколотые Знамения"
         },
-        "startDate": "2026-03-26",
-        "endDate": "2026-07-20",
+        "startDate": "2026-03-26T16:00:00Z",
+        "endDate": "2026-07-20T16:00:00Z",
         "isActive": true,
         "verification": "official",
         "sourceUrl": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1836506165565853"
@@ -278,7 +278,7 @@
           "en": "Cycle 6 & Orobyss Expansion",
           "ru": "Цикл 6 и дополнение Orobyss"
         },
-        "startDate": "2026-09-10",
+        "startDate": "2026-09-10T16:00:00Z",
         "endDate": "",
         "isActive": false,
         "verification": "estimated",
@@ -338,15 +338,15 @@
           "en": "Just Started",
           "ru": "Только начался"
         },
-        "updatedAt": "2026-07-19T09:54:23.844Z"
+        "updatedAt": "2026-07-19T22:42:44.379Z"
       },
       "currentSeason": {
         "name": {
           "en": "SS13: Afterlight",
           "ru": "SS13: Afterlight"
         },
-        "startDate": "2026-07-17",
-        "endDate": "2026-07-24",
+        "startDate": "2026-07-17T02:00:00Z",
+        "endDate": "2026-07-24T02:00:00Z",
         "isActive": false,
         "verification": "official",
         "sourceUrl": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1838407329258272"
@@ -356,7 +356,7 @@
           "en": "SS14",
           "ru": "SS14"
         },
-        "startDate": "2026-10-23",
+        "startDate": "2026-10-23T02:00:00Z",
         "endDate": "",
         "isActive": false,
         "verification": "estimated",

@@ -246,6 +246,39 @@ function upgradeToBilingualSchema(game) {
   return upgraded;
 }
 
+function normalizeGameDates(gameData) {
+  if (!gameData) return gameData;
+  const gameId = gameData.id;
+  
+  const appendDefaultTime = (dateStr) => {
+    if (!dateStr || dateStr === 'TBA') return dateStr;
+    if (dateStr.includes('T') || dateStr.includes(':')) return dateStr;
+    if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) {
+      const defaultTimes = {
+        'path-of-exile': 'T20:00:00Z',
+        'path-of-exile-2': 'T20:00:00Z',
+        'diablo-iv': 'T17:00:00Z',
+        'last-epoch': 'T16:00:00Z',
+        'torchlight-infinite': 'T02:00:00Z'
+      };
+      return `${dateStr}${defaultTimes[gameId] || 'T00:00:00Z'}`;
+    }
+    return dateStr;
+  };
+
+  if (gameData.currentSeason) {
+    gameData.currentSeason.startDate = appendDefaultTime(gameData.currentSeason.startDate);
+    gameData.currentSeason.endDate = appendDefaultTime(gameData.currentSeason.endDate);
+  }
+  if (gameData.nextSeason) {
+    gameData.nextSeason.startDate = appendDefaultTime(gameData.nextSeason.startDate);
+    gameData.nextSeason.endDate = appendDefaultTime(gameData.nextSeason.endDate);
+  }
+  
+  return gameData;
+}
+
+
 async function main() {
   console.log('=== Starting SeasonForge Data Update ===');
   const todayStr = new Date().toISOString().split('T')[0];
@@ -267,7 +300,7 @@ async function main() {
   if (fs.existsSync(seasonsPath)) {
     try {
       const oldSeasons = JSON.parse(fs.readFileSync(seasonsPath, 'utf-8'));
-      existingGames = (oldSeasons.games || []).map(upgradeToBilingualSchema);
+      existingGames = (oldSeasons.games || []).map(g => normalizeGameDates(upgradeToBilingualSchema(g)));
     } catch (e) {
       console.warn('[Orchestrator] Could not load existing seasons.json for merging:', e.message);
     }
@@ -302,6 +335,7 @@ async function main() {
 
       // Merge with existing data to preserve dates/features if scraper returned TBA
       gameData = mergeGameData(existingGame, gameData);
+      gameData = normalizeGameDates(gameData);
 
       // Validate
       Validator.validateGame(gameData);
@@ -370,7 +404,7 @@ async function main() {
     if (res.status === 'fulfilled') {
       const outcome = res.value;
       if (outcome.status === 'success' || outcome.status === 'fallback') {
-        finalGames.push(outcome.data);
+        finalGames.push(normalizeGameDates(outcome.data));
         
         logSummary.updates.push({
           game: outcome.gameId,

@@ -24,10 +24,13 @@ function formatLocalDate(dateStr) {
   const lang = state.settings?.lang || 'en';
   const locale = lang === 'ru' ? 'ru-RU' : 'en-US';
   
+  const hasTime = dateStr.includes('T') || dateStr.includes(':');
+  
   const options = {
     day: 'numeric',
     month: 'long',
-    year: 'numeric'
+    year: 'numeric',
+    ...(hasTime ? { hour: '2-digit', minute: '2-digit' } : {})
   };
   
   return new Intl.DateTimeFormat(locale, options).format(date);

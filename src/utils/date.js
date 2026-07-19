@@ -14,10 +14,13 @@ export function formatLocalDate(dateStr) {
   const lang = state.settings?.lang || 'en';
   const locale = lang === 'ru' ? 'ru-RU' : 'en-US';
 
+  const hasTime = dateStr.includes('T') || dateStr.includes(':');
+
   return new Intl.DateTimeFormat(locale, {
     day: 'numeric',
     month: 'long',
-    year: 'numeric'
+    year: 'numeric',
+    ...(hasTime ? { hour: '2-digit', minute: '2-digit' } : {})
   }).format(date);
 }
 
