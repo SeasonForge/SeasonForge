@@ -67,12 +67,12 @@ BaseAdapter.prototype.callGemini = async function(text, systemInstruction, schem
       };
     case 'last-epoch':
       return {
-        currentSeasonNameEn: "Cycle 4: Shattered Omens",
-        currentSeasonNameRu: "Цикл 4: Shattered Omens",
+        currentSeasonNameEn: "Cycle 5: Shattered Omens",
+        currentSeasonNameRu: "Цикл 5: Расколотые Знамения",
         currentSeasonStartDate: getRelativeDateString(-115),
         currentSeasonEndDate: getRelativeDateString(1),
-        nextSeasonNameEn: "Cycle 5 & Orobyss Expansion",
-        nextSeasonNameRu: "Cycle 5 & Расширение Orobyss",
+        nextSeasonNameEn: "Cycle 6 & Orobyss Expansion",
+        nextSeasonNameRu: "Цикл 6 и дополнение Orobyss",
         nextSeasonStartDate: getRelativeDateString(53),
         nextSeasonEndDate: "",
         nextSeasonVerification: "estimated",

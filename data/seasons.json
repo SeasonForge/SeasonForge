@@ -24,7 +24,7 @@
           "en": "Ending",
           "ru": "Завершается"
         },
-        "updatedAt": "2026-07-19T09:04:41.562Z"
+        "updatedAt": "2026-07-19T09:54:24.376Z"
       },
       "currentSeason": {
         "name": {
@@ -101,7 +101,7 @@
           "en": "Early Access",
           "ru": "Ранний доступ"
         },
-        "updatedAt": "2026-07-19T09:04:40.533Z"
+        "updatedAt": "2026-07-19T09:54:23.360Z"
       },
       "currentSeason": {
         "name": {
@@ -152,7 +152,8 @@
         "tags": [
           "ARPG"
         ]
-      }
+      },
+      "icon": "✨"
     },
     {
       "id": "diablo-iv",
@@ -178,7 +179,7 @@
           "en": "In Progress",
           "ru": "В разгаре"
         },
-        "updatedAt": "2026-07-19T09:04:41.969Z"
+        "updatedAt": "2026-07-19T09:54:24.980Z"
       },
       "currentSeason": {
         "name": {
@@ -259,12 +260,12 @@
           "en": "Active",
           "ru": "Активен"
         },
-        "updatedAt": "2026-07-19T09:04:40.929Z"
+        "updatedAt": "2026-07-19T09:54:23.845Z"
       },
       "currentSeason": {
         "name": {
-          "en": "Cycle 4: Shattered Omens",
-          "ru": "Цикл 4: Shattered Omens"
+          "en": "Cycle 5: Shattered Omens",
+          "ru": "Цикл 5: Расколотые Знамения"
         },
         "startDate": "2026-03-26",
         "endDate": "2026-07-20",
@@ -274,8 +275,8 @@
       },
       "nextSeason": {
         "name": {
-          "en": "Cycle 5 & Orobyss Expansion",
-          "ru": "Cycle 5 & Расширение Orobyss"
+          "en": "Cycle 6 & Orobyss Expansion",
+          "ru": "Цикл 6 и дополнение Orobyss"
         },
         "startDate": "2026-09-10",
         "endDate": "",
@@ -337,7 +338,7 @@
           "en": "Just Started",
           "ru": "Только начался"
         },
-        "updatedAt": "2026-07-19T09:04:40.921Z"
+        "updatedAt": "2026-07-19T09:54:23.844Z"
       },
       "currentSeason": {
         "name": {

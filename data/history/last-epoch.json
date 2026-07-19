@@ -1,20 +1,47 @@
 [
   {
     "season": {
-      "en": "Cycle 1.1: Harbingers of Ruin",
-      "ru": "Цикл 1.1: Предвестники Погибели"
+      "en": "Cycle 5: Shattered Omens",
+      "ru": "Цикл 5: Расколотые Знамения"
     },
-    "startDate": "2026-07-09",
+    "startDate": "2026-03-26",
     "endDate": null,
+    "sourceUrl": "https://forum.lastepoch.com/"
+  },
+  {
+    "season": {
+      "en": "Cycle 4: Beneath Ancient Skies",
+      "ru": "Цикл 4: Под Древними Небесами"
+    },
+    "startDate": "2025-08-21",
+    "endDate": "2026-03-26",
+    "sourceUrl": "https://forum.lastepoch.com/"
+  },
+  {
+    "season": {
+      "en": "Cycle 3: Tombs of the Erased",
+      "ru": "Цикл 3: Гробницы Стёртых"
+    },
+    "startDate": "2025-04-17",
+    "endDate": "2025-08-21",
+    "sourceUrl": "https://forum.lastepoch.com/"
+  },
+  {
+    "season": {
+      "en": "Cycle 2: Harbingers of Ruin",
+      "ru": "Цикл 2: Предвестники Погибели"
+    },
+    "startDate": "2024-07-09",
+    "endDate": "2025-04-17",
     "sourceUrl": "https://forum.lastepoch.com/t/harbingers-of-ruin-patch-notes/71618"
   },
   {
     "season": {
-      "en": "Cycle 1.0: Imperial Uprising",
-      "ru": "Цикл 1.0: Имперское Восстание"
+      "en": "Cycle 1: Launch",
+      "ru": "Цикл 1: Релиз"
     },
-    "startDate": "2026-02-21",
-    "endDate": "2026-07-09",
+    "startDate": "2024-02-21",
+    "endDate": "2024-07-09",
     "sourceUrl": "https://forum.lastepoch.com/"
   }
 ]
