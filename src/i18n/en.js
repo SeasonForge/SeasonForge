@@ -48,7 +48,9 @@ export const en = {
     thLink: "Announcement",
     ongoing: "Ongoing",
     readUrl: "Read ↗",
-    linksTitle: "Useful Links"
+    linksTitle: "Useful Links",
+    gamePageLinkTitle: "Game Page",
+    gamePageLinkSubtitle: "History • Description • Seasons"
   },
   timeline: {
     title: "Chronological map",

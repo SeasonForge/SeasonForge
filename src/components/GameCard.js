@@ -178,6 +178,18 @@ export function render(game = {}, options = {}) {
             </div>
             ${hasNextSeasonDate && !nextSeasonPassed ? progressBar : '<div class="game-card__progress-bar-placeholder"></div>'}
           </div>
+          ${!isDetailPage ? `
+            <a class="game-card__cta-block" href="./games/${game.id}/index.html">
+              <div class="game-card__cta-icon-box">
+                <span class="game-card__cta-icon">📖</span>
+              </div>
+              <div class="game-card__cta-content">
+                <span class="game-card__cta-title">${t('card.gamePageLinkTitle')}</span>
+                <span class="game-card__cta-subtitle">${t('card.gamePageLinkSubtitle')}</span>
+              </div>
+              <span class="game-card__cta-arrow">→</span>
+            </a>
+          ` : ''}
         </section>
 
         <section class="game-card__panel game-card__panel--side">

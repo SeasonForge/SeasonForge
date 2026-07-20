@@ -48,7 +48,9 @@ export const ru = {
     thLink: "Анонс",
     ongoing: "В процессе",
     readUrl: "Читать ↗",
-    linksTitle: "Полезные ссылки"
+    linksTitle: "Полезные ссылки",
+    gamePageLinkTitle: "Страница игры",
+    gamePageLinkSubtitle: "История • Описание • Сезоны"
   },
   timeline: {
     title: "Хронологическая карта",
