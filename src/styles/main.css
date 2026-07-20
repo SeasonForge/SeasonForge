@@ -972,10 +972,18 @@ body::after {
   transform: translateY(-50%);
 }
 
-.timeline-bar--current {
+.timeline-bar--current-elapsed {
   height: 4px;
   background: var(--game-color);
   box-shadow: 0 0 10px color-mix(in srgb, var(--game-color) 40%, transparent);
+  animation: drawLine 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: left center;
+}
+
+.timeline-bar--current-remaining {
+  height: 4px;
+  background: var(--game-color);
+  opacity: 0.45; /* Faded remaining portion */
   animation: drawLine 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   transform-origin: left center;
 }

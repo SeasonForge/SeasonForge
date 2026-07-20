@@ -110,7 +110,21 @@ export function render(games = []) {
     // Calculate segments
     const currentStart = getPercent(game.currentSeason?.startDate);
     const currentEnd = getPercent(game.currentSeason?.endDate || game.nextSeason?.startDate);
-    const currentWidth = Math.max(0, currentEnd - currentStart);
+    
+    // Split into elapsed (opacity: 1) and remaining (opacity: 0.4) based on nowPercent
+    const nowPos = nowPercent;
+    let elapsedWidth = 0;
+    let remainingWidth = 0;
+    let remainingStart = currentStart;
+
+    if (nowPos > currentStart) {
+      const elapsedEnd = Math.min(currentEnd, nowPos);
+      elapsedWidth = Math.max(0, elapsedEnd - currentStart);
+      remainingStart = elapsedEnd;
+      remainingWidth = Math.max(0, currentEnd - elapsedEnd);
+    } else {
+      remainingWidth = Math.max(0, currentEnd - currentStart);
+    }
 
     const nextStart = getPercent(game.nextSeason?.startDate);
     let nextEnd = 100;
@@ -139,10 +153,18 @@ export function render(games = []) {
           <span class="timeline-map__row-name">${name}</span>
         </div>
         <div class="timeline-map__row-track">
-          <!-- Solid bar for current season -->
-          <div class="timeline-bar timeline-bar--current" style="left: ${currentStart}%; width: ${currentWidth}%;" data-tooltip="${currentTooltip}">
-            <span class="timeline-bar__title">${getShortName(getVal(game.currentSeason?.name)) || 'TBA'}</span>
-          </div>
+          <!-- Elapsed bar for current season -->
+          ${elapsedWidth > 0 ? `
+            <div class="timeline-bar timeline-bar--current-elapsed" style="left: ${currentStart}%; width: ${elapsedWidth}%;" data-tooltip="${currentTooltip}">
+              <span class="timeline-bar__title">${getShortName(getVal(game.currentSeason?.name)) || 'TBA'}</span>
+            </div>
+          ` : ''}
+          <!-- Remaining bar for current season -->
+          ${remainingWidth > 0 ? `
+            <div class="timeline-bar timeline-bar--current-remaining" style="left: ${remainingStart}%; width: ${remainingWidth}%;" data-tooltip="${currentTooltip}">
+              ${elapsedWidth === 0 ? `<span class="timeline-bar__title">${getShortName(getVal(game.currentSeason?.name)) || 'TBA'}</span>` : ''}
+            </div>
+          ` : ''}
           <!-- Next season start circle node -->
           ${game.nextSeason?.startDate ? `
             <div class="timeline-circle" style="left: ${nextStart}%;" data-tooltip="${nextTooltip}">
