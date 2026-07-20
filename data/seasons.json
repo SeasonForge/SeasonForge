@@ -24,15 +24,15 @@
           "en": "Ending",
           "ru": "Завершается"
         },
-        "updatedAt": "2026-07-19T22:42:44.514Z"
+        "updatedAt": "2026-07-20T01:21:44.530Z"
       },
       "currentSeason": {
         "name": {
           "en": "3.28: Necropolis Finale",
           "ru": "3.28: Финал Некрополя"
         },
-        "startDate": "2026-03-29T20:00:00Z",
-        "endDate": "2026-07-20T20:00:00Z",
+        "startDate": "2026-03-30T20:00:00Z",
+        "endDate": "2026-07-21T20:00:00Z",
         "isActive": false,
         "verification": "official",
         "sourceUrl": "https://www.pathofexile.com/forum/view-thread/3986344"
@@ -42,7 +42,7 @@
           "en": "3.29: Curse of the Allflame",
           "ru": "3.29: Проклятие Всепламени"
         },
-        "startDate": "2026-07-24T20:00:00Z",
+        "startDate": "2026-07-25T20:00:00Z",
         "endDate": "",
         "isActive": false,
         "verification": "official",
@@ -101,7 +101,7 @@
           "en": "Early Access",
           "ru": "Ранний доступ"
         },
-        "updatedAt": "2026-07-19T22:42:43.976Z"
+        "updatedAt": "2026-07-20T01:21:43.995Z"
       },
       "currentSeason": {
         "name": {
@@ -179,15 +179,15 @@
           "en": "In Progress",
           "ru": "В разгаре"
         },
-        "updatedAt": "2026-07-19T22:42:45.467Z"
+        "updatedAt": "2026-07-20T01:21:45.062Z"
       },
       "currentSeason": {
         "name": {
           "en": "Season 14: Season of Death Awakening",
           "ru": "Сезон 14: Season of Death Awakening"
         },
-        "startDate": "2026-06-30T17:00:00Z",
-        "endDate": "2026-07-24T17:00:00Z",
+        "startDate": "2026-07-01T17:00:00Z",
+        "endDate": "2026-07-25T17:00:00Z",
         "isActive": false,
         "verification": "official",
         "sourceUrl": "https://news.blizzard.com/en-us/article/24268702/hunt-the-death-cult-in-season-of-death-awakening"
@@ -197,7 +197,7 @@
           "en": "Season 15",
           "ru": "Сезон 15"
         },
-        "startDate": "2026-09-18T17:00:00Z",
+        "startDate": "2026-09-19T17:00:00Z",
         "endDate": "",
         "isActive": false,
         "verification": "estimated",
@@ -260,25 +260,25 @@
           "en": "Active",
           "ru": "Активен"
         },
-        "updatedAt": "2026-07-19T22:42:44.356Z"
+        "updatedAt": "2026-07-20T01:21:44.509Z"
       },
       "currentSeason": {
         "name": {
-          "en": "Cycle 5: Shattered Omens",
-          "ru": "Цикл 5: Расколотые Знамения"
+          "en": "Cycle 4: Shattered Omens",
+          "ru": "Цикл 4: Расколотые Знамения"
         },
-        "startDate": "2026-03-26T16:00:00Z",
-        "endDate": "2026-07-20T16:00:00Z",
+        "startDate": "2026-03-27T16:00:00Z",
+        "endDate": "2026-07-21T16:00:00Z",
         "isActive": true,
         "verification": "official",
         "sourceUrl": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1836506165565853"
       },
       "nextSeason": {
         "name": {
-          "en": "Cycle 6 & Orobyss Expansion",
-          "ru": "Цикл 6 и дополнение Orobyss"
+          "en": "Cycle 5 & Orobyss Expansion",
+          "ru": "Цикл 5 и дополнение Orobyss"
         },
-        "startDate": "2026-09-10T16:00:00Z",
+        "startDate": "2026-09-11T16:00:00Z",
         "endDate": "",
         "isActive": false,
         "verification": "estimated",
@@ -338,15 +338,15 @@
           "en": "Just Started",
           "ru": "Только начался"
         },
-        "updatedAt": "2026-07-19T22:42:44.379Z"
+        "updatedAt": "2026-07-20T01:21:44.644Z"
       },
       "currentSeason": {
         "name": {
           "en": "SS13: Afterlight",
           "ru": "SS13: Afterlight"
         },
-        "startDate": "2026-07-17T02:00:00Z",
-        "endDate": "2026-07-24T02:00:00Z",
+        "startDate": "2026-07-18T02:00:00Z",
+        "endDate": "2026-07-25T02:00:00Z",
         "isActive": false,
         "verification": "official",
         "sourceUrl": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1838407329258272"
@@ -356,7 +356,7 @@
           "en": "SS14",
           "ru": "SS14"
         },
-        "startDate": "2026-10-23T02:00:00Z",
+        "startDate": "2026-10-24T02:00:00Z",
         "endDate": "",
         "isActive": false,
         "verification": "estimated",
