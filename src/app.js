@@ -182,6 +182,44 @@ function renderApp() {
 
   attachNavbarEvents();
   attachFooterEvents();
+  
+  if (state.activeView === 'timeline') {
+    attachTimelineTooltipEvents();
+  }
+}
+
+function attachTimelineTooltipEvents() {
+  const grid = document.querySelector('.timeline-map__grid');
+  const tooltip = document.getElementById('timeline-tooltip');
+  if (!grid || !tooltip) return;
+
+  grid.addEventListener('mouseover', (e) => {
+    const item = e.target.closest('[data-tooltip]');
+    if (!item) return;
+
+    const content = item.getAttribute('data-tooltip');
+    if (!content) return;
+
+    tooltip.innerHTML = content;
+    tooltip.style.display = 'block';
+  });
+
+  grid.addEventListener('mousemove', (e) => {
+    if (tooltip.style.display === 'block') {
+      tooltip.style.left = `${e.clientX + 15}px`;
+      tooltip.style.top = `${e.clientY + 15}px`;
+    }
+  });
+
+  grid.addEventListener('mouseout', (e) => {
+    const item = e.target.closest('[data-tooltip]');
+    if (!item) return;
+
+    const related = e.relatedTarget;
+    if (related && item.contains(related)) return;
+
+    tooltip.style.display = 'none';
+  });
 }
 
 function attachNavbarEvents() {
@@ -235,27 +273,49 @@ function attachFooterEvents() {
  */
 function tickCountdown() {
   const state = getState();
-  if (state.activeView !== 'card' || !state.activeGame) return;
-
-  const targetDateStr = state.activeGame.nextSeason?.startDate;
-  if (!targetDateStr) return; // TBA — no live countdown to maintain
-
-  const targetDate = new Date(targetDateStr);
-  if (targetDate <= new Date()) {
-    // Countdown just expired — full re-render to show "Just Launched" state
-    renderApp();
-    return;
+  
+  // 1. Update Game Card Countdown (if visible)
+  if (state.activeView === 'card' && state.activeGame) {
+    const targetDateStr = state.activeGame.nextSeason?.startDate;
+    if (targetDateStr) {
+      const targetDate = new Date(targetDateStr);
+      if (targetDate <= new Date()) {
+        renderApp();
+        return;
+      }
+      
+      const total = targetDate.getTime() - Date.now();
+      const update = (attr, val) => {
+        const el = document.querySelector(`.game-card__countdown [data-countdown="${attr}"]`);
+        if (el) el.textContent = val;
+      };
+      update('days',    Math.floor(total / (1000 * 60 * 60 * 24)));
+      update('hours',   Math.floor((total / (1000 * 60 * 60)) % 24));
+      update('minutes', Math.floor((total / (1000 * 60)) % 60));
+      update('seconds', Math.floor((total / 1000) % 60));
+    }
   }
 
-  const total = targetDate.getTime() - Date.now();
-  const update = (attr, val) => {
-    const el = document.querySelector(`[data-countdown="${attr}"]`);
-    if (el) el.textContent = val;
-  };
-  update('days',    Math.floor(total / (1000 * 60 * 60 * 24)));
-  update('hours',   Math.floor((total / (1000 * 60 * 60)) % 24));
-  update('minutes', Math.floor((total / (1000 * 60)) % 60));
-  update('seconds', Math.floor((total / 1000) % 60));
+  // 2. Update Timeline Upcoming Launches Countdowns (if visible)
+  if (state.activeView === 'timeline') {
+    state.games.forEach((game) => {
+      const targetDateStr = game.nextSeason?.startDate;
+      if (!targetDateStr) return;
+
+      const targetDate = new Date(targetDateStr);
+      const total = targetDate.getTime() - Date.now();
+      
+      if (total <= 0) return;
+
+      const update = (attr, val) => {
+        const el = document.querySelector(`[data-game-countdown="${game.id}"] [data-countdown="${attr}"]`);
+        if (el) el.textContent = val;
+      };
+      update('days',    Math.floor(total / (1000 * 60 * 60 * 24)));
+      update('hours',   Math.floor((total / (1000 * 60 * 60)) % 24));
+      update('minutes', Math.floor((total / (1000 * 60)) % 60));
+    });
+  }
 }
 
 function startCountdownLoop() {

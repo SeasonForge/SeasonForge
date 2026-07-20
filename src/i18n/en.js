@@ -53,8 +53,14 @@ export const en = {
     gamePageLinkSubtitle: "History • Description • Seasons"
   },
   timeline: {
-    title: "Chronological map",
-    subtitle: "Upcoming season launches",
+    title: "LIVE SEASON TIMELINE",
+    subtitle: "All seasons on one timeline",
+    now: "NOW",
+    upcomingTitle: "UPCOMING LAUNCHES",
+    upcomingSubtitle: "Next season starts across all games",
+    started: "Started",
+    ends: "Ends",
+    duration: "Duration",
     fallbackTitle: "Timeline",
     fallbackNoGames: "No games available",
     tba: "TBA"

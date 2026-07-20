@@ -816,99 +816,434 @@ body::after {
 
 /* ===== TIMELINE ===== */
 
+.timeline-view-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
 .timeline-card {
   border-radius: var(--radius-md);
-  padding: 1rem 1.1rem;
+  padding: 1.5rem;
   margin-top: 1rem;
-  border-color: rgba(148, 163, 184, 0.1);
+  background: rgba(15, 23, 42, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .timeline-card__header {
-  margin-bottom: 0.85rem;
-  padding-bottom: 0.6rem;
-  border-bottom: 1px solid var(--border-soft);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .timeline-card__title {
   margin: 0;
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-size: 1.05rem;
+  font-weight: 800;
   color: #e6eefb;
-}
-
-.timeline-card__caption {
-  margin: 0.2rem 0 0;
-  color: var(--muted-strong);
-  font-size: 0.78rem;
-}
-
-.timeline__container {
-  border-left: 2px solid rgba(99, 102, 241, 0.15);
-  padding-left: 0.85rem;
-}
-
-.timeline {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  gap: 0.65rem;
-}
-
-.timeline__item {
-  display: flex;
-  gap: 0.85rem;
-  align-items: start;
-  padding: 0.75rem 0.85rem;
-  border-radius: var(--radius-sm);
-  background: rgba(2, 6, 23, 0.35);
-  border: 1px solid rgba(148, 163, 184, 0.06);
-  position: relative;
-  transition: border-color 0.15s ease, background 0.15s ease;
-}
-
-.timeline__item:hover {
-  border-color: rgba(99, 102, 241, 0.18);
-  background: rgba(2, 6, 23, 0.5);
-}
-
-.timeline__item::before {
-  content: '';
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  background: var(--accent);
-  margin-top: 0.4rem;
-  box-shadow: 0 0 0 5px rgba(99, 102, 241, 0.12);
-  flex-shrink: 0;
-  position: relative;
-  left: -1.3rem;
-}
-
-.timeline__date {
-  min-width: 88px;
-  font-size: 0.75rem;
-  color: var(--accent);
-  font-weight: 700;
   letter-spacing: 0.02em;
 }
 
-.timeline__content {
-  min-width: 0;
-}
-
-.timeline__content strong {
-  display: block;
-  margin-bottom: 0.15rem;
-  color: #f8fafc;
-  font-size: 0.9rem;
-}
-
-.timeline__content p,
-.timeline__content small {
-  margin: 0;
+.timeline-card__caption {
+  margin: 0.25rem 0 0;
   color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.timeline-card__year-badge {
+  background: rgba(139, 92, 246, 0.15);
+  color: var(--accent);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-xs);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* --- HORIZONTAL GRID --- */
+.timeline-map__grid {
+  position: relative;
+  background: rgba(15, 23, 42, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-sm);
+  padding: 2.25rem 1.25rem 1.25rem 1.25rem;
+  overflow: hidden;
+}
+
+.timeline-map__months {
+  display: flex;
+  margin-left: 180px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-map__month {
+  flex: 1;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+.timeline-map__grid-lines {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 192px; /* 180px row label + 12px grid start offset */
+  right: 20px; /* offset for right edge alignment */
+  display: flex;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.timeline-map__grid-line {
+  flex: 1;
+  border-right: 1px dashed rgba(255, 255, 255, 0.03);
+}
+
+.timeline-map__rows {
+  position: relative;
+  z-index: 2;
+}
+
+/* --- ROW LAYOUT --- */
+.timeline-map__row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.timeline-map__row:last-child {
+  margin-bottom: 0.5rem;
+}
+
+.timeline-map__row-label {
+  width: 180px;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-shrink: 0;
+}
+
+.timeline-map__row-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.timeline-map__row-emoji {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.timeline-map__row-name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+.timeline-map__row-track {
+  flex: 1;
+  position: relative;
+  height: 24px;
+  margin-left: 12px;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+/* --- LINES & NODES --- */
+.timeline-bar {
+  position: absolute;
+  border-radius: 999px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.timeline-bar--current {
+  height: 4px;
+  background: var(--game-color);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--game-color) 40%, transparent);
+  animation: drawLine 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: left center;
+}
+
+.timeline-bar__title {
+  position: absolute;
+  bottom: 8px;
+  left: 4px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  white-space: nowrap;
+  color: color-mix(in srgb, var(--game-color) 85%, #ffffff);
+}
+
+.timeline-circle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #090d16;
+  border: 3px solid var(--game-color);
+  transform: translate(-50%, -50%);
+  top: 50%;
+  z-index: 5;
+  box-shadow: 0 0 8px var(--game-color);
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  animation: popNode 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s both;
+}
+
+.timeline-circle:hover {
+  transform: translate(-50%, -50%) scale(1.35);
+  background-color: var(--game-color);
+}
+
+.timeline-circle__label {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--game-color) 85%, #ffffff);
+  white-space: nowrap;
+}
+
+.timeline-circle__date {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.timeline-bar--future {
+  height: 2px;
+  border-top: 2px dashed color-mix(in srgb, var(--game-color) 35%, transparent);
+}
+
+/* --- NOW LINE & DOT --- */
+.timeline-map__now-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1.5px;
+  background: linear-gradient(to bottom, var(--accent), rgba(139, 92, 246, 0.05));
+  z-index: 3;
+  pointer-events: none;
+}
+
+.timeline-map__now-badge {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.58rem;
+  font-weight: 800;
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+}
+
+.timeline-map__now-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--game-color);
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  box-shadow: 0 0 10px var(--game-color);
+  pointer-events: none;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes drawLine {
+  from { transform: translateY(-50%) scaleX(0); }
+  to { transform: translateY(-50%) scaleX(1); }
+}
+
+@keyframes popNode {
+  from { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+  to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+/* --- TOOLTIP --- */
+.timeline-tooltip {
+  position: fixed;
+  z-index: 9999;
+  background: rgba(10, 15, 30, 0.95);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 15px rgba(139, 92, 246, 0.1);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+  font-family: inherit;
+  backdrop-filter: blur(4px);
+  max-width: 250px;
+}
+
+.timeline-tooltip__title {
   font-size: 0.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.02em;
+}
+
+.timeline-tooltip__season {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 0.35rem;
+}
+
+.timeline-tooltip__detail {
+  font-size: 0.65rem;
+  color: #cbd5e1;
+  margin-bottom: 0.15rem;
+}
+
+.timeline-tooltip__detail strong {
+  color: var(--muted);
+}
+
+/* --- UPCOMING LAUNCHES CARD GRID --- */
+.upcoming-launches {
+  margin-top: 0.5rem;
+}
+
+.upcoming-launches__header {
+  margin-bottom: 1rem;
+}
+
+.upcoming-launches__title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #e6eefb;
+  letter-spacing: 0.02em;
+}
+
+.upcoming-launches__caption {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.upcoming-launches__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.upcoming-card {
+  background: rgba(15, 23, 42, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.upcoming-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--game-color);
+  opacity: 0.6;
+}
+
+.upcoming-card:hover {
+  background: rgba(15, 23, 42, 0.45);
+  border-color: color-mix(in srgb, var(--game-color) 40%, transparent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--game-color) 12%, transparent);
+}
+
+.upcoming-card__date {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--game-color);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.35rem;
+}
+
+.upcoming-card__game-name {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.upcoming-card__season-name {
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-top: 0.15rem;
+  margin-bottom: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.upcoming-card__countdown {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  padding-top: 0.6rem;
+}
+
+.upcoming-card__countdown-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: var(--radius-xs);
+  padding: 0.25rem 0;
+}
+
+.upcoming-card__countdown-item strong {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.upcoming-card__countdown-item span {
+  font-size: 0.55rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 0.05rem;
 }
 
 /* ===== TOAST ===== */

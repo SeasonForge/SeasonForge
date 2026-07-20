@@ -53,8 +53,14 @@ export const ru = {
     gamePageLinkSubtitle: "История • Описание • Сезоны"
   },
   timeline: {
-    title: "Хронологическая карта",
-    subtitle: "Предстоящие запуски сезонов",
+    title: "ЖИВАЯ ХРОНОЛОГИЯ СЕЗОНОВ",
+    subtitle: "Все сезоны на одной временной шкале",
+    now: "СЕЙЧАС",
+    upcomingTitle: "БЛИЖАЙШИЕ ЗАПУСКИ",
+    upcomingSubtitle: "Запуски новых сезонов во всех играх",
+    started: "Старт",
+    ends: "Конец",
+    duration: "Длительность",
     fallbackTitle: "Хронология",
     fallbackNoGames: "Игры недоступны",
     tba: "TBA"
