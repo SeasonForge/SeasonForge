@@ -81,7 +81,7 @@ Ensure all dates are formatted strictly as YYYY-MM-DD or empty string. Do not in
           en: 'Torchlight: Infinite',
           ru: 'Торчлайт: Инфинит'
         },
-        developer: 'Perfect World Entertainment',
+        developer: 'XD',
         logo: '',
         color: '#c27a2b',
         icon: '⚡',
