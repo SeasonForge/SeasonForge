@@ -84,7 +84,7 @@ Ensure all dates are formatted strictly as YYYY-MM-DD or empty string. Do not in
           ru: 'Last Epoch'
         },
         developer: 'Eleventh Hour Games',
-        logo: '',
+        logo: 'last-epoch.png',
         color: '#6b3fa0',
         icon: '⏳',
         website: 'https://www.lastepoch.com/',

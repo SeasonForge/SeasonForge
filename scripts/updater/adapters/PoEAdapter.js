@@ -105,7 +105,7 @@ Ensure dates are formatted strictly as YYYY-MM-DD or empty string. Do not invent
           ru: 'Path of Exile 1'
         },
         developer: 'Grinding Gear Games',
-        logo: '',
+        logo: 'path-of-exile.png',
         color: '#f5c342',
         icon: '💀',
         website: 'https://www.pathofexile.com/',

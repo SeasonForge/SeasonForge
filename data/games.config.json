@@ -19,6 +19,7 @@
     "enabled": true,
     "staticData": {
       "developer": "Grinding Gear Games",
+      "logo": "path-of-exile-2.png",
       "color": "#4b6e9c",
       "icon": "✨",
       "website": "https://pathofexile2.com",

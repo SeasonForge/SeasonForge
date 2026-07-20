@@ -237,6 +237,22 @@ body::after {
   box-shadow: 0 0 10px color-mix(in srgb, var(--tab-color, var(--accent)) 30%, transparent);
 }
 
+.navbar__tab-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: inherit;
+  padding: 3px;
+  box-sizing: border-box;
+  display: block;
+}
+
+.navbar__tab-emoji {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .navbar__tab-copy {
   display: flex;
   flex-direction: column;

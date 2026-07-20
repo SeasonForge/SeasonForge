@@ -82,7 +82,7 @@ Ensure all dates are formatted strictly as YYYY-MM-DD or empty string. Do not in
           ru: 'Торчлайт: Инфинит'
         },
         developer: 'XD',
-        logo: '',
+        logo: 'torchlight-infinite.png',
         color: '#c27a2b',
         icon: '⚡',
         website: 'https://torchlightinfinite.com/',

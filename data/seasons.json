@@ -7,7 +7,7 @@
         "ru": "Path of Exile 1"
       },
       "developer": "Grinding Gear Games",
-      "logo": "",
+      "logo": "path-of-exile.png",
       "color": "#f5c342",
       "icon": "💀",
       "website": "https://www.pathofexile.com/",
@@ -85,7 +85,7 @@
         "ru": "Path of Exile 2"
       },
       "developer": "Grinding Gear Games",
-      "logo": "",
+      "logo": "path-of-exile-2.png",
       "color": "#4b6e9c",
       "website": "https://pathofexile2.com",
       "latestNews": {
@@ -162,7 +162,7 @@
         "ru": "Diablo IV"
       },
       "developer": "Blizzard Entertainment",
-      "logo": "",
+      "logo": "diablo-iv.png",
       "color": "#8b1f1f",
       "icon": "🔥",
       "website": "https://diablo4.blizzard.com/",
@@ -243,7 +243,7 @@
         "ru": "Last Epoch"
       },
       "developer": "Eleventh Hour Games",
-      "logo": "",
+      "logo": "last-epoch.png",
       "color": "#6b3fa0",
       "icon": "⏳",
       "website": "https://www.lastepoch.com/",
@@ -321,7 +321,7 @@
         "ru": "Торчлайт: Инфинит"
       },
       "developer": "XD",
-      "logo": "",
+      "logo": "torchlight-infinite.png",
       "color": "#c27a2b",
       "icon": "⚡",
       "website": "https://torchlightinfinite.com/",

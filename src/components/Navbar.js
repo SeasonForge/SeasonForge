@@ -23,14 +23,19 @@ export function render(games = [], activeGame = null, activeView = 'card') {
       const statusLabel = escapeHtml(t(`statuses.${statusCode}`) || game.status?.label || 'Active');
       const color = escapeHtml(game.color || '#6366f1');
       const icon = escapeHtml(game.icon || '🎮');
+      const logo = game.logo ? escapeHtml(game.logo) : '';
       
       const isActive = activeId && id === activeId;
       const activeClass = isActive ? 'navbar__link--active' : '';
 
+      const iconHtml = logo 
+        ? `<img src="./assets/logos/${logo}" alt="${name}" class="navbar__tab-logo" />`
+        : `<span class="navbar__tab-emoji">${icon}</span>`;
+
       return `
         <div class="navbar__tab ${activeClass}" data-game-id="${escapeHtml(id)}" style="--tab-color: ${color};">
           <div class="navbar__tab-main">
-            <div class="navbar__tab-icon">${icon}</div>
+            <div class="navbar__tab-icon">${iconHtml}</div>
             <div class="navbar__tab-copy">
               <h3 class="navbar__name">${name}</h3>
               <p class="navbar__season">${currentSeason}</p>

@@ -83,7 +83,7 @@ Ensure all dates are formatted strictly as YYYY-MM-DD or empty string. Do not in
           ru: 'Diablo IV'
         },
         developer: 'Blizzard Entertainment',
-        logo: '',
+        logo: 'diablo-iv.png',
         color: '#8b1f1f',
         icon: '🔥',
         website: 'https://diablo4.blizzard.com/',
