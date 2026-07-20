@@ -21,7 +21,7 @@ BaseAdapter.prototype.callGemini = async function(text, systemInstruction, schem
         currentSeasonEndDate: "",
         nextSeasonNameEn: "3.29: Curse of the Allflame",
         nextSeasonNameRu: "3.29: Проклятие Всепламени",
-        nextSeasonStartDate: getRelativeDateString(5),
+        nextSeasonStartDate: getRelativeDateString(4),
         nextSeasonEndDate: "",
         nextSeasonVerification: "official",
         status: "ending",
