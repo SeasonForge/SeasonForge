@@ -8,7 +8,9 @@ export const en = {
     eyebrow: "SELECT GAME",
     caption: "Compact list of current seasons",
     btnCard: "Game Card",
-    btnTimeline: "Timeline 2026"
+    btnTimeline: "Timeline 2026",
+    btnGames: "Games",
+    btnMore: "More"
   },
   statuses: {
     ending: "Ending",

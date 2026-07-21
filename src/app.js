@@ -23,6 +23,18 @@ import { formatLastUpdated } from './utils/date.js';
 import { initFeedback } from './utils/initFeedback.js';
 import { initStreamer } from './utils/initStreamer.js';
 
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+function escapeAttr(value) {
+  return escapeHtml(value);
+}
+
 const seasonService = new SeasonService();
 let countdownTimer = null;
 let modalInstance = null;
@@ -128,7 +140,7 @@ function renderApp() {
   // Render language selector buttons
   renderLangSwitcher();
 
-  // Translate static header elements
+  // Translate static header elements and mobile nav labels
   const appHeaderSubtitle = document.getElementById('app-header-subtitle');
   if (appHeaderSubtitle) {
     appHeaderSubtitle.textContent = t('header.subtitle');
@@ -154,6 +166,30 @@ function renderApp() {
     streamerBtn.textContent = t('streamer.btnLabel');
   }
 
+  const mobLblTracker = document.getElementById('mob-lbl-tracker');
+  if (mobLblTracker) mobLblTracker.textContent = t('navbar.btnCard');
+
+  const mobLblTimeline = document.getElementById('mob-lbl-timeline');
+  if (mobLblTimeline) mobLblTimeline.textContent = t('navbar.btnTimeline');
+
+  const mobLblGames = document.getElementById('mob-lbl-games');
+  if (mobLblGames) mobLblGames.textContent = t('navbar.btnGames') || 'Games';
+
+  const mobLblMore = document.getElementById('mob-lbl-more');
+  if (mobLblMore) mobLblMore.textContent = t('navbar.btnMore') || 'More';
+
+  const mobTrackerBtn = document.getElementById('mob-btn-tracker');
+  const mobTimelineBtn = document.getElementById('mob-btn-timeline');
+  const mobGamesBtn = document.getElementById('mob-btn-games');
+  const mobMoreBtn = document.getElementById('mob-btn-more');
+
+  if (mobTrackerBtn && mobTimelineBtn && mobGamesBtn && mobMoreBtn) {
+    mobTrackerBtn.classList.toggle('mobile-nav__btn--active', state.activeView === 'card');
+    mobTimelineBtn.classList.toggle('mobile-nav__btn--active', state.activeView === 'timeline');
+    mobGamesBtn.classList.toggle('mobile-nav__btn--active', state.activeView === 'games');
+    mobMoreBtn.classList.toggle('mobile-nav__btn--active', state.activeView === 'more');
+  }
+
   // Update navbar
   if (navbarRoot) {
     navbarRoot.innerHTML = renderNavbar(state.games, state.activeGame, state.activeView);
@@ -173,19 +209,142 @@ function renderApp() {
   if (contentRoot) {
     if (state.activeView === 'timeline') {
       contentRoot.innerHTML = renderTimeline(state.games);
-    } else if (!state.activeGame) {
+    } else if (state.activeView === 'games') {
+      contentRoot.innerHTML = `
+        <div class="mobile-games-panel">
+          <h2 class="mobile-games-panel__title">${t('navbar.eyebrow')}</h2>
+          <div class="navbar__list">${state.games.map(game => {
+            const id = game.id;
+            const name = escapeHtml(getVal(game.name) || 'Untitled Game');
+            const currentSeason = escapeHtml(getVal(game.currentSeason?.name) || 'TBA');
+            const statusCode = game.status?.code || 'active';
+            const statusLabel = escapeHtml(t(`statuses.${statusCode}`) || game.status?.label || 'Active');
+            const color = escapeHtml(game.color || '#6366f1');
+            const icon = escapeHtml(game.icon || '🎮');
+            const logo = game.logo ? escapeHtml(game.logo) : '';
+            
+            const iconHtml = logo 
+              ? `<img src="./assets/logos/${logo}" alt="${name}" class="navbar__tab-logo" />`
+              : `<span class="navbar__tab-emoji">${icon}</span>`;
+              
+            return `
+              <div class="navbar__tab" data-game-id="${escapeAttr(id)}" style="--tab-color: ${color};">
+                <div class="navbar__tab-main">
+                  <div class="navbar__tab-icon">${iconHtml}</div>
+                  <div class="navbar__tab-copy">
+                    <h3 class="navbar__name">${name}</h3>
+                    <p class="navbar__season">${currentSeason}</p>
+                  </div>
+                </div>
+                <span class="navbar__status navbar__status--${statusCode}">${statusLabel}</span>
+              </div>
+            `;
+          }).join('')}</div>
+        </div>
+      `;
+      
+      // Attach click events to the games in this mobile panel
+      contentRoot.querySelectorAll('.navbar__tab[data-game-id]').forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const gameId = tab.getAttribute('data-game-id');
+          const nextGame = state.games.find((g) => g.id === gameId);
+          if (nextGame) {
+            setActiveGame(nextGame, true);
+            setActiveView('card', true);
+            renderToast(t('toasts.gameSelected', { game: getVal(nextGame.name) }));
+            renderApp();
+          }
+        });
+      });
+    } else if (state.activeView === 'more') {
+      contentRoot.innerHTML = `
+        <div class="more-panel">
+          <h2 class="more-panel__title">${t('navbar.btnMore') || 'More'}</h2>
+          
+          <div class="more-panel__section">
+            <span class="more-panel__label">Language / Язык</span>
+            <div class="more-panel__lang-row">
+              <button class="more-panel__lang-btn ${state.settings.lang === 'en' ? 'more-panel__lang-btn--active' : ''}" data-lang-val="en">
+                <img src="https://flagcdn.com/w20/us.png" class="lang-switcher__flag" alt="EN"> English
+              </button>
+              <button class="more-panel__lang-btn ${state.settings.lang === 'ru' ? 'more-panel__lang-btn--active' : ''}" data-lang-val="ru">
+                <img src="https://flagcdn.com/w20/ru.png" class="lang-switcher__flag" alt="RU"> Русский
+              </button>
+            </div>
+          </div>
+
+          <div class="more-panel__section">
+            <span class="more-panel__label">Tools / Утилиты</span>
+            <div class="more-panel__tools-list">
+              <button id="mob-feedback-trigger" class="more-panel__tool-btn">
+                <span class="more-panel__tool-icon">💬</span>
+                <span>${t('feedback.btnLabel') || 'Feedback'}</span>
+              </button>
+              <button id="mob-streamer-trigger" class="more-panel__tool-btn">
+                <span class="more-panel__tool-icon">🎥</span>
+                <span>${t('streamer.btnLabel') || 'OBS Widgets'}</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="more-panel__section">
+            <span class="more-panel__label">About / О проекте</span>
+            <div class="more-panel__about-box">
+              <p><strong>SeasonForge</strong> — ${t('header.subtitle') || 'Monitoring current and upcoming seasons of major action RPGs.'}</p>
+              <p>Data source: <strong>Official Game Feeds</strong></p>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // Attach language switcher events in More tab
+      contentRoot.querySelectorAll('[data-lang-val]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const selected = btn.getAttribute('data-lang-val');
+          if (selected !== state.settings.lang) {
+            setLanguage(selected);
+            updateSeo();
+            renderApp();
+          }
+        });
+      });
+
+      // Attach tool trigger buttons in More tab
+      const mobFeedbackTrigger = document.getElementById('mob-feedback-trigger');
+      if (mobFeedbackTrigger) {
+        mobFeedbackTrigger.addEventListener('click', () => {
+          const btn = document.getElementById('feedback-trigger-btn');
+          if (btn) btn.click();
+        });
+      }
+
+      const mobStreamerTrigger = document.getElementById('mob-streamer-trigger');
+      if (mobStreamerTrigger) {
+        mobStreamerTrigger.addEventListener('click', () => {
+          const btn = document.getElementById('streamer-trigger-btn');
+          if (btn) btn.click();
+        });
+      }
+    } else if (!state.activeGame && state.games.length > 0) {
       contentRoot.innerHTML = `<p>${t('fallback.noGame')}</p>`;
     } else {
-      const countdown = calculateCountdown(state.activeGame?.nextSeason?.startDate || state.activeGame?.currentSeason?.startDate);
-      const progressBar = renderProgressBar(getProgressPercent(state.activeGame), state.activeGame?.color);
-      const statusBadge = renderStatusBadge(state.activeGame?.status);
+      // Render feed of all games
+      const cardsHtml = state.games.map((game) => {
+        const isActive = state.activeGame && game.id === state.activeGame.id;
+        const countdown = calculateCountdown(game.nextSeason?.startDate || game.currentSeason?.startDate);
+        const progressBar = renderProgressBar(getProgressPercent(game), game.color);
+        const statusBadge = renderStatusBadge(game.status);
 
-      const card = renderGameCard(state.activeGame, {
-        countdown,
-        progressBar,
-        statusBadge
-      });
-      contentRoot.innerHTML = card;
+        const card = renderGameCard(game, {
+          countdown,
+          progressBar,
+          statusBadge
+        });
+
+        // Add active class for desktop filtering
+        return card.replace('class="game-card"', `class="game-card ${isActive ? 'game-card--active' : ''}"`);
+      }).join('');
+      contentRoot.innerHTML = `<div class="game-feed">${cardsHtml}</div>`;
     }
   }
 
@@ -204,7 +363,10 @@ function attachTimelineTooltipEvents() {
   const tooltip = document.getElementById('timeline-tooltip');
   if (!grid || !tooltip) return;
 
+  let activeTouch = false;
+
   grid.addEventListener('mouseover', (e) => {
+    if (activeTouch) return;
     const item = e.target.closest('[data-tooltip]');
     if (!item) return;
 
@@ -216,6 +378,7 @@ function attachTimelineTooltipEvents() {
   });
 
   grid.addEventListener('mousemove', (e) => {
+    if (activeTouch) return;
     if (tooltip.style.display === 'block') {
       tooltip.style.left = `${e.clientX + 15}px`;
       tooltip.style.top = `${e.clientY + 15}px`;
@@ -223,6 +386,7 @@ function attachTimelineTooltipEvents() {
   });
 
   grid.addEventListener('mouseout', (e) => {
+    if (activeTouch) return;
     const item = e.target.closest('[data-tooltip]');
     if (!item) return;
 
@@ -230,6 +394,51 @@ function attachTimelineTooltipEvents() {
     if (related && item.contains(related)) return;
 
     tooltip.style.display = 'none';
+  });
+
+  // Tap-to-toggle details on mobile touchscreens
+  const handleTouchTap = (e) => {
+    const item = e.target.closest('[data-tooltip]');
+    if (item) {
+      activeTouch = true;
+      e.stopPropagation();
+      
+      const content = item.getAttribute('data-tooltip');
+      if (!content) return;
+
+      tooltip.innerHTML = content;
+      tooltip.style.display = 'block';
+      
+      // Position the tooltip near the tapped element
+      const rect = item.getBoundingClientRect();
+      const tooltipWidth = tooltip.offsetWidth || 180;
+      const tooltipHeight = tooltip.offsetHeight || 120;
+      
+      tooltip.style.left = `${rect.left + rect.width / 2 - tooltipWidth / 2}px`;
+      tooltip.style.top = `${rect.top - tooltipHeight - 10}px`;
+
+      // Contain tooltip within screen edges
+      const tooltipRect = tooltip.getBoundingClientRect();
+      if (tooltipRect.left < 10) {
+        tooltip.style.left = '10px';
+      } else if (tooltipRect.right > window.innerWidth - 10) {
+        tooltip.style.left = `${window.innerWidth - tooltipWidth - 10}px`;
+      }
+      if (tooltipRect.top < 10) {
+        tooltip.style.top = `${rect.bottom + 10}px`;
+      }
+    } else {
+      tooltip.style.display = 'none';
+    }
+  };
+
+  grid.addEventListener('click', handleTouchTap);
+  
+  // Hide tooltip when clicking anywhere else
+  document.addEventListener('click', (e) => {
+    if (!grid.contains(e.target)) {
+      tooltip.style.display = 'none';
+    }
   });
 }
 
@@ -283,6 +492,43 @@ function attachNavbarEvents() {
       renderApp();
     });
   }
+
+  // Mobile Bottom Nav listeners
+  const mobTrackerBtn = document.getElementById('mob-btn-tracker');
+  const mobTimelineBtn = document.getElementById('mob-btn-timeline');
+  const mobGamesBtn = document.getElementById('mob-btn-games');
+  const mobMoreBtn = document.getElementById('mob-btn-more');
+
+  if (mobTrackerBtn) {
+    mobTrackerBtn.addEventListener('click', () => {
+      setActiveView('card', true);
+      const state = getState();
+      if (!state.activeGame && state.games.length > 0) {
+        const lastGame = localStorage.getItem('lastGame');
+        const matched = state.games.find(g => g.id === lastGame || g.name?.en === lastGame || g.name?.ru === lastGame);
+        setActiveGame(matched || state.games[0], true);
+      }
+      renderApp();
+    });
+  }
+  if (mobTimelineBtn) {
+    mobTimelineBtn.addEventListener('click', () => {
+      setActiveView('timeline', true);
+      renderApp();
+    });
+  }
+  if (mobGamesBtn) {
+    mobGamesBtn.addEventListener('click', () => {
+      setActiveView('games', true);
+      renderApp();
+    });
+  }
+  if (mobMoreBtn) {
+    mobMoreBtn.addEventListener('click', () => {
+      setActiveView('more', true);
+      renderApp();
+    });
+  }
 }
 
 function attachFooterEvents() {
@@ -296,26 +542,29 @@ function attachFooterEvents() {
 function tickCountdown() {
   const state = getState();
   
-  // 1. Update Game Card Countdown (if visible)
-  if (state.activeView === 'card' && state.activeGame) {
-    const targetDateStr = state.activeGame.nextSeason?.startDate;
-    if (targetDateStr) {
+  // 1. Update Game Card Countdowns
+  if (state.activeView === 'card') {
+    state.games.forEach((game) => {
+      const targetDateStr = game.nextSeason?.startDate;
+      if (!targetDateStr) return;
+
       const targetDate = new Date(targetDateStr);
-      if (targetDate <= new Date()) {
+      const now = new Date();
+      if (targetDate <= now) {
         renderApp();
         return;
       }
       
-      const total = targetDate.getTime() - Date.now();
+      const total = targetDate.getTime() - now.getTime();
       const update = (attr, val) => {
-        const el = document.querySelector(`.game-card__countdown [data-countdown="${attr}"]`);
+        const el = document.querySelector(`.game-card[data-game-id="${game.id}"] .game-card__countdown [data-countdown="${attr}"]`);
         if (el) el.textContent = val;
       };
       update('days',    Math.floor(total / (1000 * 60 * 60 * 24)));
       update('hours',   Math.floor((total / (1000 * 60 * 60)) % 24));
       update('minutes', Math.floor((total / (1000 * 60)) % 60));
       update('seconds', Math.floor((total / 1000) % 60));
-    }
+    });
   }
 
   // 2. Update Timeline Upcoming Launches Countdowns (if visible)

@@ -8,7 +8,9 @@ export const ru = {
     eyebrow: "ВЫБЕРИТЕ ИГРУ",
     caption: "Компактный список актуальных сезонов",
     btnCard: "Карточка игры",
-    btnTimeline: "Хронология 2026"
+    btnTimeline: "Хронология 2026",
+    btnGames: "Игры",
+    btnMore: "Ещё"
   },
   statuses: {
     ending: "Завершается",

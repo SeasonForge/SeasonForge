@@ -39,10 +39,19 @@ export function setActiveGame(game, saveToStorage = false) {
 }
 
 export function setActiveView(view, saveToStorage = false) {
-  state.activeView = view === 'timeline' ? 'timeline' : 'card';
+  if (['timeline', 'card', 'games', 'more'].includes(view)) {
+    state.activeView = view;
+  } else {
+    state.activeView = 'card';
+  }
   if (saveToStorage) {
-    const storageValue = state.activeView === 'timeline' ? 'Timeline' : 'Game Card';
-    localStorage.setItem('lastView', storageValue);
+    const mapping = {
+      'timeline': 'Timeline',
+      'card': 'Game Card',
+      'games': 'Games',
+      'more': 'More'
+    };
+    localStorage.setItem('lastView', mapping[state.activeView] || 'Game Card');
   }
   return state;
 }
