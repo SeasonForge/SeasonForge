@@ -31,8 +31,8 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
-          # Check if there are changes in data/
-          git add data/seasons.json data/cache/ data/logs/
+          # Stage all changes (data updates and re-generated static pages)
+          git add .
           
           if git diff --cached --quiet; then
             echo "No data changes detected. Skipping commit."
