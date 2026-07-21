@@ -259,25 +259,27 @@ export function render(games = []) {
           <div class="timeline-card__year-badge">2026</div>
         </div>
         
-        <div class="timeline-map__grid">
-          <!-- Month labels -->
-          <div class="timeline-map__months">
-            ${monthsHeaderHtml}
-          </div>
-          
-          <!-- Background grid lines -->
-          <div class="timeline-map__grid-lines">
-            ${gridLinesHtml}
-          </div>
-          
-          <!-- Rows container -->
-          <div class="timeline-map__rows">
-            ${rowsHtml}
-          </div>
-          
-          <!-- Vertical NOW line marker -->
-          <div class="timeline-map__now-line" style="left: calc(180px + (100% - 180px) * ${nowPercent / 100});">
-            <span class="timeline-map__now-badge">${t('timeline.now')}</span>
+        <div class="timeline-map__scroll-container">
+          <div class="timeline-map__grid">
+            <!-- Month labels -->
+            <div class="timeline-map__months">
+              ${monthsHeaderHtml}
+            </div>
+            
+            <!-- Background grid lines -->
+            <div class="timeline-map__grid-lines">
+              ${gridLinesHtml}
+            </div>
+            
+            <!-- Rows container -->
+            <div class="timeline-map__rows">
+              ${rowsHtml}
+            </div>
+            
+            <!-- Vertical NOW line marker -->
+            <div class="timeline-map__now-line" style="left: calc(180px + (100% - 180px) * ${nowPercent / 100});">
+              <span class="timeline-map__now-badge">${t('timeline.now')}</span>
+            </div>
           </div>
         </div>
         <div class="timeline-card__watermark">

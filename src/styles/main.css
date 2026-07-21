@@ -865,6 +865,14 @@ body::after {
 }
 
 /* --- HORIZONTAL GRID --- */
+.timeline-map__scroll-container {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--radius-sm);
+}
+
 .timeline-map__grid {
   position: relative;
   background: rgba(15, 23, 42, 0.45);
@@ -2844,5 +2852,12 @@ body.overlay-type-countdown .game-card__panel--side {
   .lang-switcher__btn {
     flex: 0 0 auto !important;
     justify-content: center;
+  }
+}
+
+/* Mobile responsive fixes for Timeline */
+@media (max-width: 768px) {
+  .timeline-map__grid {
+    min-width: 750px;
   }
 }
