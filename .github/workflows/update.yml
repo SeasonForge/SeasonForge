@@ -40,5 +40,5 @@ jobs:
             echo "Content changes detected. Committing..."
             git commit -m "chore: auto-update seasons data and cache [skip ci]"
             git pull --rebase origin main
-            git push
+            git push origin HEAD:main
           fi
