@@ -46,7 +46,7 @@
         "startDate": "2026-07-24T20:00:00Z",
         "endDate": "",
         "isActive": false,
-        "verification": "estimated",
+        "verification": "official",
         "sourceUrl": "https://www.pathofexile.com/forum/view-thread/3986972"
       },
       "features": {
@@ -125,7 +125,7 @@
         "startDate": "2026-12-15T20:00:00Z",
         "endDate": "",
         "isActive": false,
-        "verification": "official",
+        "verification": "estimated",
         "sourceUrl": "https://www.pathofexile.com/forum/view-thread/3587981"
       },
       "features": {
