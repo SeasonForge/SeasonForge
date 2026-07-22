@@ -1,7 +1,8 @@
 export const en = {
   header: {
     subtitle: "Monitoring current and upcoming seasons of major action RPGs",
-    lastUpdated: "Last updated",
+    lastUpdated: "Last Changed",
+    statusCheck: "Parser Active",
     dataSource: "Data source"
   },
   navbar: {

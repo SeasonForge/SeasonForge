@@ -1,7 +1,8 @@
 export const ru = {
   header: {
     subtitle: "Мониторинг текущих и будущих сезонов главных ролевых экшенов",
-    lastUpdated: "Последнее обновление",
+    lastUpdated: "Изменено",
+    statusCheck: "Парсер активен",
     dataSource: "Источник данных"
   },
   navbar: {
