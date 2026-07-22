@@ -166,10 +166,24 @@ function renderApp() {
 
   renderModal();
 
-  // Update dynamic timestamp in the page header
+  // Update dynamic timestamps in the page header
+  const lastChecked = state.rawData?.lastCheckedAt || state.lastCheckedAt;
+  const checkedEl = document.getElementById('last-checked-time');
+  const checkedLbl = document.getElementById('lbl-status-check');
+  if (checkedLbl) {
+    checkedLbl.innerHTML = `<span class="status-dot"></span> ${t('header.statusCheck')}`;
+  }
+  if (checkedEl && lastChecked) {
+    checkedEl.textContent = formatLastUpdated(lastChecked, state.settings?.lang);
+  }
+
   const updateTimes = state.games.map(g => new Date(g.status?.updatedAt).getTime()).filter(t => !Number.isNaN(t));
   const latestTime = updateTimes.length > 0 ? Math.max(...updateTimes) : null;
   const timeEl = document.getElementById('last-updated-time');
+  const updatedLbl = document.getElementById('lbl-last-updated');
+  if (updatedLbl) {
+    updatedLbl.textContent = t('header.lastUpdated');
+  }
   if (timeEl && latestTime) {
     timeEl.textContent = formatLastUpdated(latestTime, state.settings?.lang);
   }

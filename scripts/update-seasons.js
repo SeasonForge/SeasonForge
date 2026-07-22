@@ -478,14 +478,15 @@ async function main() {
     }
   }
 
-  // 4. Save seasons.json only if changed or missing
+  // 4. Save seasons.json (always update lastCheckedAt timestamp)
+  const nowIso = new Date().toISOString();
+  atomicWriteFileSync(seasonsPath, JSON.stringify({ lastCheckedAt: nowIso, games: finalGames }, null, 2), 'utf-8');
   if (hasActualChanges) {
-    atomicWriteFileSync(seasonsPath, JSON.stringify({ games: finalGames }, null, 2), 'utf-8');
-    console.log(`[Orchestrator] seasons.json updated successfully with ${finalGames.length} games.`);
+    console.log(`[Orchestrator] seasons.json updated successfully with ${finalGames.length} games (data changed).`);
     logSummary.saved = true;
   } else {
-    console.log('[Orchestrator] seasons.json not modified (avoiding empty commits).');
-    logSummary.saved = false;
+    console.log(`[Orchestrator] seasons.json updated with new lastCheckedAt (${nowIso}).`);
+    logSummary.saved = true;
   }
 
   // 5. Write log
