@@ -8,6 +8,7 @@ export const state = {
   loading: false,
   error: null,
   lastUpdate: null,
+  rawData: null,
   settings: {
     theme: 'dark',
     autoRefresh: true,
@@ -27,6 +28,11 @@ export function setLanguage(lang) {
 
 export function setGames(games) {
   state.games = Array.isArray(games) ? games : [];
+  return state;
+}
+
+export function setRawData(data) {
+  state.rawData = data || null;
   return state;
 }
 

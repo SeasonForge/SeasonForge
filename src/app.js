@@ -8,7 +8,8 @@ import {
   setError,
   setGames,
   setLoading,
-  setLanguage
+  setLanguage,
+  setRawData
 } from './store/state.js';
 import { t, getVal } from './i18n/index.js';
 import { render as renderNavbar } from './components/Navbar.js';
@@ -589,7 +590,9 @@ async function initializeApp() {
   setError(null);
 
   try {
-    const games = await seasonService.getGames();
+    const rawData = await seasonService.loadSeasons();
+    const games = Array.isArray(rawData?.games) ? rawData.games : [];
+    setRawData(rawData);
     setGames(games);
 
     // Check overlay parameters

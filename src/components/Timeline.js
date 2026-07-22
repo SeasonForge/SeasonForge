@@ -83,6 +83,7 @@ export function render(games = []) {
   // 3. Dynamic Grid months header
   const activeMonths = [];
   const monthCursor = new Date(startTimelineDate);
+  monthCursor.setDate(1);
   const locale = lang === 'ru' ? 'ru-RU' : 'en-US';
   const monthFormatter = new Intl.DateTimeFormat(locale, { month: 'short' });
 

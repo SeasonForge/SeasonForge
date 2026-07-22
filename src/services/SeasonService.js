@@ -13,7 +13,15 @@ export class SeasonService {
   }
 
   async loadSeasons() {
-    const response = await fetch(this.seasonsPath);
+    let fetchPath = this.seasonsPath || './data/seasons.json';
+    if (typeof window !== 'undefined') {
+      const isGamesSubdir = window.location.pathname.includes('/games/');
+      if (isGamesSubdir && !fetchPath.startsWith('http') && !fetchPath.startsWith('/')) {
+        fetchPath = '../../data/seasons.json';
+      }
+    }
+
+    const response = await fetch(fetchPath);
 
     if (!response.ok) {
       throw new Error(`Unable to load season data: ${response.status}`);

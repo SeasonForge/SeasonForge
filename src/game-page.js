@@ -1,5 +1,5 @@
 import { SeasonService } from './services/SeasonService.js';
-import { getState, setLanguage, setGames } from './store/state.js';
+import { getState, setLanguage, setGames, setRawData } from './store/state.js';
 import { t, getVal } from './i18n/index.js';
 import { render as renderGameCard } from './components/GameCard.js';
 import { render as renderProgressBar } from './components/ProgressBar.js';
@@ -277,7 +277,9 @@ async function init() {
     const gameId = rootEl.getAttribute('data-game-id');
     
     // Fetch all games
-    const games = await seasonService.getGames();
+    const rawData = await seasonService.loadSeasons();
+    const games = Array.isArray(rawData?.games) ? rawData.games : [];
+    setRawData(rawData);
     setGames(games);
 
     // Locate the active game

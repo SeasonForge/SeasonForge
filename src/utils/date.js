@@ -39,8 +39,7 @@ export function formatLastUpdated(timestamp) {
 
   const formatted = new Intl.DateTimeFormat(locale, {
     day: 'numeric',
-    month: 'long',
-    year: 'numeric',
+    month: 'short',
     hour: '2-digit',
     minute: '2-digit',
     hour12: false,
