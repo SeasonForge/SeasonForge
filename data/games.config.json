@@ -15,62 +15,9 @@
       "en": "Path of Exile 2",
       "ru": "Path of Exile 2"
     },
-    "adapter": "StaticAdapter",
+    "adapter": "PoE2Adapter",
     "enabled": true,
-    "staticData": {
-      "developer": "Grinding Gear Games",
-      "logo": "path-of-exile-2.png",
-      "color": "#4b6e9c",
-      "icon": "✨",
-      "website": "https://pathofexile2.com",
-      "latestNews": {
-        "title": "Path of Exile 2 Early Access FAQ & Info",
-        "url": "https://www.pathofexile.com/forum/view-thread/3587981",
-        "publishDate": "2026-05-29",
-        "source": "Official FAQ"
-      },
-      "status": {
-        "code": "early-access",
-        "label": {
-          "en": "Early Access",
-          "ru": "Ранний доступ"
-        }
-      },
-      "currentSeason": {
-        "name": {
-          "en": "0.5.0: Return of the Ancients",
-          "ru": "0.5.0: Return of the Ancients"
-        },
-        "startDate": "2026-05-29",
-        "endDate": "",
-        "verification": "official",
-        "sourceUrl": "https://www.pathofexile.com/forum/view-thread/3587981"
-      },
-      "nextSeason": {
-        "name": {
-          "en": "Version 1.0 (Release)",
-          "ru": "Version 1.0 (Release)"
-        },
-        "startDate": "2026-12-15",
-        "endDate": "",
-        "verification": "estimated",
-        "sourceUrl": "https://www.pathofexile.com/forum/view-thread/3587981"
-      },
-      "features": {
-        "en": [
-          "Runes of Aldur league testing",
-          "Atlas of Worlds rework for the sequel",
-          "New passive skill tree for early access",
-          "Full release and new campaign acts in December"
-        ],
-        "ru": [
-          "Тестирование лиги Runes of Aldur",
-          "Переработка механики Атласа Миров под сиквел",
-          "Новое древо пассивных умений для раннего доступа",
-          "Полный релиз и новые акты кампании в декабре"
-        ]
-      }
-    }
+    "appId": 2694490
   },
   {
     "id": "diablo-iv",

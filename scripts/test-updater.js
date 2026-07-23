@@ -115,6 +115,31 @@ BaseAdapter.prototype.callGemini = async function(text, systemInstruction, schem
           "Автоматизация лут-фильтра нового поколения"
         ]
       };
+    case 'path-of-exile-2':
+      return {
+        currentSeasonNameEn: "0.5.0: Return of the Ancients",
+        currentSeasonNameRu: "0.5.0: Return of the Ancients",
+        currentSeasonStartDate: getRelativeDateString(-55),
+        currentSeasonEndDate: "",
+        nextSeasonNameEn: "Version 1.0 (Release)",
+        nextSeasonNameRu: "Версия 1.0 (Релиз)",
+        nextSeasonStartDate: getRelativeDateString(140),
+        nextSeasonEndDate: "",
+        nextSeasonVerification: "estimated",
+        status: "early-access",
+        featuresEn: [
+          "Runes of Aldur league testing",
+          "Atlas of Worlds rework for the sequel",
+          "New passive skill tree for early access",
+          "Full release and new campaign acts in December"
+        ],
+        featuresRu: [
+          "Тестирование лиги Runes of Aldur",
+          "Переработка механики Атласа Миров под сиквел",
+          "Новое древо пассивных умений для раннего доступа",
+          "Полный релиз и новые акты кампании в декабре"
+        ]
+      };
     default:
       return {
         currentSeasonNameEn: "Mock Season",
