@@ -1,52 +1,71 @@
 import { BaseAdapter } from './updater/adapters/BaseAdapter.js';
 
-// Helper to compute dates relative to today
-const getRelativeDateString = (daysOffset) => {
-  const date = new Date();
-  date.setDate(date.getDate() + daysOffset);
-  return date.toISOString().split('T')[0];
-};
-
 // Mock the Gemini API call so tests can run without an API key
 BaseAdapter.prototype.callGemini = async function(text, systemInstruction, schema) {
   console.log(`[Mock Gemini] Mocking extraction for: ${this.gameId}`);
   
-  // Return realistic mock extraction data matching the mockup screenshots mathematically
   switch (this.gameId) {
     case 'path-of-exile':
       return {
         currentSeasonNameEn: "3.28: Necropolis Finale",
-        currentSeasonNameRu: "3.28: Финал Некрополя",
-        currentSeasonStartDate: getRelativeDateString(-112),
+        currentSeasonNameRu: "3.28: Necropolis Finale",
+        currentSeasonStartDate: "2026-03-30",
         currentSeasonEndDate: "",
-        nextSeasonNameEn: "3.29: Curse of the Allflame",
-        nextSeasonNameRu: "3.29: Проклятие Всепламени",
-        nextSeasonStartDate: getRelativeDateString(4),
+        nextSeasonNameEn: "Curse of the Allflame",
+        nextSeasonNameRu: "Curse of the Allflame",
+        nextSeasonStartDate: "2026-07-24",
         nextSeasonEndDate: "",
         nextSeasonVerification: "official",
-        status: "ending",
+        status: "in-development",
         featuresEn: [
-          "Curse of the Allflame expansion content",
-          "ExileCon 2026 Solo Qualifier Race Events",
-          "Reliquarian ascendancy update for Scion class",
-          "Exclusive Abyssal Soul Shatter cosmetic effect"
+          "Protection while channeling Verisium Ore",
+          "Animate Guardian's inventory",
+          "Crafting Bench in every town",
+          "New underwater Uniques including The Crustacean's Call and Subsume the Source",
+          "ExileCon 2026 Race Qualifier Events"
         ],
         featuresRu: [
-          "Контент нового расширения Проклятие Всепламени",
-          "Квалификационные гонки ExileCon 2026 в соло-формате",
-          "Обновление восхождения Reliquarian для класса Дикарка (Scion)",
-          "Эксклюзивный косметический эффект Abyssal Soul Shatter"
+          "Защита во время поддержания жилы веризия",
+          "Инвентарь Анимированного стража",
+          "Верстак для создания предметов в каждом городе",
+          "Новые подводные уникальные предметы, включая Призыв ракообразного и Поглощение истока",
+          "Отборочные состязания к ExileCon 2026"
+        ]
+      };
+    case 'path-of-exile-2':
+      return {
+        currentSeasonNameEn: "0.5.0: Return of the Ancients",
+        currentSeasonNameRu: "0.5.0: Return of the Ancients",
+        currentSeasonStartDate: "2026-05-29",
+        currentSeasonEndDate: "",
+        nextSeasonNameEn: "Version 1.0 (Release)",
+        nextSeasonNameRu: "Version 1.0 (Release)",
+        nextSeasonStartDate: "2026-12-15",
+        nextSeasonEndDate: "",
+        nextSeasonVerification: "estimated",
+        status: "early-access",
+        featuresEn: [
+          "Runes of Aldur league testing",
+          "Atlas of Worlds rework for the sequel",
+          "New passive skill tree for early access",
+          "Full release and new campaign acts in December"
+        ],
+        featuresRu: [
+          "Тестирование лиги Runes of Aldur",
+          "Переработка механики Атласа Миров под сиквел",
+          "Новое древо пассивных умений для раннего доступа",
+          "Полный релиз и новые акты кампании в декабре"
         ]
       };
     case 'diablo-iv':
       return {
         currentSeasonNameEn: "Season 14: Season of Death Awakening",
-        currentSeasonNameRu: "Сезон 14: Season of Death Awakening",
-        currentSeasonStartDate: getRelativeDateString(-19),
+        currentSeasonNameRu: "Season 14: Season of Death Awakening",
+        currentSeasonStartDate: "2026-07-01",
         currentSeasonEndDate: "",
         nextSeasonNameEn: "Season 15",
-        nextSeasonNameRu: "Сезон 15",
-        nextSeasonStartDate: getRelativeDateString(61),
+        nextSeasonNameRu: "Season 15",
+        nextSeasonStartDate: "2026-09-19",
         nextSeasonEndDate: "",
         nextSeasonVerification: "estimated",
         status: "in-progress",
@@ -68,12 +87,12 @@ BaseAdapter.prototype.callGemini = async function(text, systemInstruction, schem
     case 'last-epoch':
       return {
         currentSeasonNameEn: "Cycle 4: Shattered Omens",
-        currentSeasonNameRu: "Цикл 4: Расколотые Знамения",
-        currentSeasonStartDate: getRelativeDateString(-115),
+        currentSeasonNameRu: "Cycle 4: Shattered Omens",
+        currentSeasonStartDate: "2026-03-27",
         currentSeasonEndDate: "",
         nextSeasonNameEn: "Cycle 5 & Orobyss Expansion",
-        nextSeasonNameRu: "Цикл 5 и дополнение Orobyss",
-        nextSeasonStartDate: getRelativeDateString(53),
+        nextSeasonNameRu: "Cycle 5 & Orobyss Expansion",
+        nextSeasonStartDate: "2026-09-11",
         nextSeasonEndDate: "",
         nextSeasonVerification: "estimated",
         status: "active",
@@ -94,11 +113,11 @@ BaseAdapter.prototype.callGemini = async function(text, systemInstruction, schem
       return {
         currentSeasonNameEn: "SS13: Afterlight",
         currentSeasonNameRu: "SS13: Afterlight",
-        currentSeasonStartDate: getRelativeDateString(-2),
+        currentSeasonStartDate: "2026-07-18",
         currentSeasonEndDate: "",
         nextSeasonNameEn: "SS14",
         nextSeasonNameRu: "SS14",
-        nextSeasonStartDate: getRelativeDateString(96),
+        nextSeasonStartDate: "2026-10-24",
         nextSeasonEndDate: "",
         nextSeasonVerification: "estimated",
         status: "just-started",
@@ -115,40 +134,15 @@ BaseAdapter.prototype.callGemini = async function(text, systemInstruction, schem
           "Автоматизация лут-фильтра нового поколения"
         ]
       };
-    case 'path-of-exile-2':
-      return {
-        currentSeasonNameEn: "0.5.0: Return of the Ancients",
-        currentSeasonNameRu: "0.5.0: Return of the Ancients",
-        currentSeasonStartDate: getRelativeDateString(-55),
-        currentSeasonEndDate: "",
-        nextSeasonNameEn: "Version 1.0 (Release)",
-        nextSeasonNameRu: "Версия 1.0 (Релиз)",
-        nextSeasonStartDate: getRelativeDateString(140),
-        nextSeasonEndDate: "",
-        nextSeasonVerification: "estimated",
-        status: "early-access",
-        featuresEn: [
-          "Runes of Aldur league testing",
-          "Atlas of Worlds rework for the sequel",
-          "New passive skill tree for early access",
-          "Full release and new campaign acts in December"
-        ],
-        featuresRu: [
-          "Тестирование лиги Runes of Aldur",
-          "Переработка механики Атласа Миров под сиквел",
-          "Новое древо пассивных умений для раннего доступа",
-          "Полный релиз и новые акты кампании в декабре"
-        ]
-      };
     default:
       return {
         currentSeasonNameEn: "Mock Season",
         currentSeasonNameRu: "Мок Сезон",
-        currentSeasonStartDate: getRelativeDateString(-30),
-        currentSeasonEndDate: getRelativeDateString(30),
+        currentSeasonStartDate: "2026-01-01",
+        currentSeasonEndDate: "",
         nextSeasonNameEn: "Mock Next Season",
         nextSeasonNameRu: "Мок Следующий Сезон",
-        nextSeasonStartDate: getRelativeDateString(45),
+        nextSeasonStartDate: "2026-06-01",
         nextSeasonEndDate: "",
         status: "active",
         featuresEn: ["Mock Feature A", "Mock Feature B"],
