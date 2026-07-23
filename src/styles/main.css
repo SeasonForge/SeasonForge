@@ -3026,40 +3026,161 @@ body.overlay-type-countdown .game-card__panel--side {
     width: 100%;
   }
 
-  .game-card {
+  /* Compact Mobile Game Card Design (Inspired by Upcoming Launches) */
+  .game-feed .game-card {
     display: block !important;
-    border-radius: 16px !important;
+    border-radius: 20px !important;
+    padding: 1.25rem !important;
+    background: rgba(30, 41, 59, 0.7) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35) !important;
     margin-bottom: 0.5rem;
+    position: relative;
+    overflow: hidden;
   }
 
-  /* Compact touch targets & padding for mobile cards */
-  .game-card__header {
-    padding: 1rem 1.25rem !important;
+  /* Hide heavy desktop-only clutter on main feed cards */
+  .game-feed .game-card__source-info,
+  .game-feed .game-card__panel--features,
+  .game-feed .game-card__developer,
+  .game-feed .game-card__watermark,
+  .game-feed .game-card__subtitle,
+  .game-feed .game-card__next-season > .game-card__label,
+  .game-feed .game-card__panel--main > .game-card__label,
+  .game-feed .game-card__panel--main > .game-card__season,
+  .game-feed .game-card__meta-row,
+  .game-feed .game-card__panel--side > .game-card__label {
+    display: none !important;
   }
 
-  .game-card__countdown {
+  .game-feed .game-card__header {
+    display: flex !important;
+    flex-direction: column-reverse !important;
     gap: 0.5rem !important;
+    padding: 0 !important;
+    margin-bottom: 0.75rem !important;
+    border-bottom: none !important;
+    background: transparent !important;
   }
 
-  .game-card__countdown-item {
-    padding: 0.5rem 0.25rem !important;
-    border-radius: 10px !important;
-  }
-
-  .game-card__countdown-val {
-    font-size: 1.35rem !important;
-  }
-
-  .game-card__links {
-    flex-direction: column !important;
-    width: 100%;
-  }
-
-  .game-card__links > a,
-  .game-card__links > button {
+  .game-feed .game-card__next-season {
+    display: flex !important;
+    flex-direction: row-reverse !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    text-align: left !important;
     width: 100% !important;
-    justify-content: center;
-    min-height: 44px;
+  }
+
+  .game-feed .game-card__next-season-date {
+    font-size: 0.9rem !important;
+    font-weight: 800 !important;
+    color: #a855f7 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    margin: 0 !important;
+  }
+
+  .game-feed .game-card__title-block {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.25rem !important;
+  }
+
+  .game-feed .game-card__title {
+    font-size: 1.35rem !important;
+    font-weight: 800 !important;
+    margin: 0 !important;
+    line-height: 1.25 !important;
+    color: #f8fafc !important;
+  }
+
+  .game-feed .game-card__next-season-title {
+    font-size: 0.95rem !important;
+    color: var(--muted, #94a3b8) !important;
+    font-weight: 500 !important;
+  }
+
+  .game-feed .game-card__body {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  .game-feed .game-card__panel--main,
+  .game-feed .game-card__panel--side {
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    display: block !important;
+  }
+
+  /* Progress bar block */
+  .game-feed .game-card__progress-block {
+    margin: 0.25rem 0 0.5rem 0 !important;
+  }
+
+  .game-feed .game-card__progress-meta {
+    font-size: 0.75rem !important;
+    margin-bottom: 0.35rem !important;
+  }
+
+  /* Compact 3-column countdown like image 2 */
+  .game-feed .game-card__countdown {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.5rem !important;
+    margin-top: 0.5rem !important;
+  }
+
+  .game-feed .game-card__countdown-item:last-child {
+    display: none !important;
+  }
+
+  .game-feed .game-card__countdown-item {
+    background: rgba(15, 23, 42, 0.65) !important;
+    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    border-radius: 12px !important;
+    padding: 0.55rem 0.25rem !important;
+    text-align: center !important;
+  }
+
+  .game-feed .game-card__countdown-val,
+  .game-feed .game-card__countdown-item strong {
+    font-size: 1.25rem !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+  }
+
+  .game-feed .game-card__countdown-item span {
+    font-size: 0.65rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.04em !important;
+    color: var(--muted, #94a3b8) !important;
+  }
+
+  /* CTA link to game page */
+  .game-feed .game-card__cta-block {
+    margin-top: 0.5rem !important;
+    padding: 0.65rem 0.85rem !important;
+    border-radius: 12px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  .game-feed .game-card__cta-title {
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+  }
+
+  .game-feed .game-card__cta-subtitle {
+    display: none !important;
   }
 }
 }
