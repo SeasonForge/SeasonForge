@@ -1,5 +1,5 @@
 {
-  "lastCheckedAt": "2026-07-22T09:17:35.502Z",
+  "lastCheckedAt": "2026-07-23T00:02:22.666Z",
   "games": [
     {
       "id": "path-of-exile",
@@ -13,56 +13,54 @@
       "icon": "💀",
       "website": "https://www.pathofexile.com/",
       "latestNews": {
-        "id": "https://www.pathofexile.com/forum/view-thread/3986972",
-        "title": "Curse of the Allflame Item Filter Information",
-        "url": "https://www.pathofexile.com/forum/view-thread/3986972",
-        "publishDate": "Tue, 21 Jul 2026 23:51:31 +0000",
+        "id": "https://www.pathofexile.com/forum/view-thread/3987226",
+        "title": "Path of Exile 1: Curse of the Allflame Voyage Deep Dive",
+        "url": "https://www.pathofexile.com/forum/view-thread/3987226",
+        "publishDate": "Wed, 22 Jul 2026 22:32:02 +0000",
         "source": "Path of Exile RSS"
       },
       "status": {
-        "code": "in-development",
+        "code": "ending",
         "label": {
-          "en": "In Development",
-          "ru": "В разработке"
+          "en": "Ending",
+          "ru": "Завершается"
         },
-        "updatedAt": "2026-07-22T05:27:24.982Z"
+        "updatedAt": "2026-07-23T00:02:21.076Z"
       },
       "currentSeason": {
         "name": {
           "en": "3.28: Necropolis Finale",
           "ru": "3.28: Necropolis Finale"
         },
-        "startDate": "2026-03-30T20:00:00Z",
+        "startDate": "2026-04-02T20:00:00Z",
         "endDate": "",
         "isActive": false,
         "verification": "official",
-        "sourceUrl": "https://www.pathofexile.com/forum/view-thread/3986972"
+        "sourceUrl": "https://www.pathofexile.com/forum/view-thread/3987226"
       },
       "nextSeason": {
         "name": {
-          "en": "Curse of the Allflame",
-          "ru": "Curse of the Allflame"
+          "en": "3.29: Curse of the Allflame",
+          "ru": "3.29: Curse of the Allflame"
         },
-        "startDate": "2026-07-24T20:00:00Z",
+        "startDate": "2026-07-27T20:00:00Z",
         "endDate": "",
         "isActive": false,
         "verification": "official",
-        "sourceUrl": "https://www.pathofexile.com/forum/view-thread/3986972"
+        "sourceUrl": "https://www.pathofexile.com/forum/view-thread/3987226"
       },
       "features": {
         "en": [
-          "Protection while channeling Verisium Ore",
-          "Animate Guardian's inventory",
-          "Crafting Bench in every town",
-          "New underwater Uniques including The Crustacean's Call and Subsume the Source",
-          "ExileCon 2026 Race Qualifier Events"
+          "Curse of the Allflame expansion content",
+          "ExileCon 2026 Solo Qualifier Race Events",
+          "Reliquarian ascendancy update for Scion class",
+          "Exclusive Abyssal Soul Shatter cosmetic effect"
         ],
         "ru": [
-          "Защита во время поддержания жилы веризия",
-          "Инвентарь Анимированного стража",
-          "Верстак для создания предметов в каждом городе",
-          "Новые подводные уникальные предметы, включая Призыв ракообразного и Поглощение истока",
-          "Отборочные состязания к ExileCon 2026"
+          "Контент нового расширения Проклятие Всепламени",
+          "Квалификационные гонки ExileCon 2026 в соло-формате",
+          "Обновление восхождения Reliquarian для класса Дикарка (Scion)",
+          "Эксклюзивный косметический эффект Abyssal Soul Shatter"
         ]
       },
       "links": {
@@ -92,11 +90,11 @@
       "color": "#4b6e9c",
       "website": "https://pathofexile2.com",
       "latestNews": {
-        "id": "static-config",
-        "title": "Path of Exile 2 Early Access FAQ & Info",
-        "url": "https://www.pathofexile.com/forum/view-thread/3587981",
-        "publishDate": "2026-05-29",
-        "source": "Official FAQ"
+        "id": "1836506165584601",
+        "title": "Path of Exile 2 Build Showcase: Slowmaxing Chronomancer by TuskDeluxe",
+        "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1836506165584601",
+        "publishDate": "2026-07-09T21:05:43.000Z",
+        "source": "Path of Exile 2 Steam News"
       },
       "status": {
         "code": "early-access",
@@ -104,7 +102,7 @@
           "en": "Early Access",
           "ru": "Ранний доступ"
         },
-        "updatedAt": "2026-07-22T09:17:34.499Z"
+        "updatedAt": "2026-07-23T00:02:21.017Z"
       },
       "currentSeason": {
         "name": {
@@ -115,18 +113,18 @@
         "endDate": "",
         "isActive": false,
         "verification": "official",
-        "sourceUrl": "https://www.pathofexile.com/forum/view-thread/3587981"
+        "sourceUrl": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1836506165584601"
       },
       "nextSeason": {
         "name": {
           "en": "Version 1.0 (Release)",
-          "ru": "Version 1.0 (Release)"
+          "ru": "Версия 1.0 (Релиз)"
         },
-        "startDate": "2026-12-15T20:00:00Z",
+        "startDate": "2026-12-10T20:00:00Z",
         "endDate": "",
         "isActive": false,
         "verification": "estimated",
-        "sourceUrl": "https://www.pathofexile.com/forum/view-thread/3587981"
+        "sourceUrl": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1836506165584601"
       },
       "features": {
         "en": [
@@ -150,10 +148,13 @@
       "metadata": {
         "region": "Global",
         "platforms": [
-          "PC"
+          "PC",
+          "PlayStation 5",
+          "Xbox Series X/S"
         ],
         "tags": [
-          "ARPG"
+          "ARPG",
+          "Dark Fantasy"
         ]
       },
       "icon": "✨"
@@ -170,10 +171,10 @@
       "icon": "🔥",
       "website": "https://diablo4.blizzard.com/",
       "latestNews": {
-        "id": "24268702",
-        "title": "Hunt the Death Cult in Season of Death Awakening",
-        "url": "https://news.blizzard.com/en-us/article/24268702/hunt-the-death-cult-in-season-of-death-awakening",
-        "publishDate": "2026-06-23T17:00:00Z",
+        "id": "24271884",
+        "title": "Raise Hell with the Diablo IV BlizzCon Digital Bundle",
+        "url": "https://news.blizzard.com/en-us/article/24271884/raise-hell-with-the-diablo-iv-blizzcon-digital-bundle",
+        "publishDate": "2026-07-22T17:30:00Z",
         "source": "Official Diablo IV News"
       },
       "status": {
@@ -182,29 +183,29 @@
           "en": "In Progress",
           "ru": "В разгаре"
         },
-        "updatedAt": "2026-07-20T01:21:45.062Z"
+        "updatedAt": "2026-07-23T00:02:22.212Z"
       },
       "currentSeason": {
         "name": {
           "en": "Season 14: Season of Death Awakening",
           "ru": "Season 14: Season of Death Awakening"
         },
-        "startDate": "2026-07-01T17:00:00Z",
+        "startDate": "2026-07-04T17:00:00Z",
         "endDate": "",
         "isActive": false,
         "verification": "official",
-        "sourceUrl": "https://news.blizzard.com/en-us/article/24268702/hunt-the-death-cult-in-season-of-death-awakening"
+        "sourceUrl": "https://news.blizzard.com/en-us/article/24271884/raise-hell-with-the-diablo-iv-blizzcon-digital-bundle"
       },
       "nextSeason": {
         "name": {
           "en": "Season 15",
           "ru": "Season 15"
         },
-        "startDate": "2026-09-19T17:00:00Z",
+        "startDate": "2026-09-22T17:00:00Z",
         "endDate": "",
         "isActive": false,
         "verification": "estimated",
-        "sourceUrl": "https://news.blizzard.com/en-us/article/24268702/hunt-the-death-cult-in-season-of-death-awakening"
+        "sourceUrl": "https://news.blizzard.com/en-us/article/24271884/raise-hell-with-the-diablo-iv-blizzcon-digital-bundle"
       },
       "features": {
         "en": [
@@ -263,14 +264,14 @@
           "en": "Active",
           "ru": "Активен"
         },
-        "updatedAt": "2026-07-20T01:21:44.509Z"
+        "updatedAt": "2026-07-23T00:02:22.508Z"
       },
       "currentSeason": {
         "name": {
           "en": "Cycle 4: Shattered Omens",
           "ru": "Cycle 4: Shattered Omens"
         },
-        "startDate": "2026-03-27T16:00:00Z",
+        "startDate": "2026-03-30T16:00:00Z",
         "endDate": "",
         "isActive": true,
         "verification": "official",
@@ -281,7 +282,7 @@
           "en": "Cycle 5 & Orobyss Expansion",
           "ru": "Cycle 5 & Orobyss Expansion"
         },
-        "startDate": "2026-09-11T16:00:00Z",
+        "startDate": "2026-09-14T16:00:00Z",
         "endDate": "",
         "isActive": false,
         "verification": "estimated",
@@ -341,14 +342,14 @@
           "en": "Just Started",
           "ru": "Только начался"
         },
-        "updatedAt": "2026-07-20T01:21:44.644Z"
+        "updatedAt": "2026-07-23T00:02:22.665Z"
       },
       "currentSeason": {
         "name": {
           "en": "SS13: Afterlight",
           "ru": "SS13: Afterlight"
         },
-        "startDate": "2026-07-18T02:00:00Z",
+        "startDate": "2026-07-21T02:00:00Z",
         "endDate": "",
         "isActive": false,
         "verification": "official",
@@ -359,7 +360,7 @@
           "en": "SS14",
           "ru": "SS14"
         },
-        "startDate": "2026-10-24T02:00:00Z",
+        "startDate": "2026-10-27T02:00:00Z",
         "endDate": "",
         "isActive": false,
         "verification": "estimated",
